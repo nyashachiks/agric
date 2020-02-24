@@ -14,8 +14,8 @@ class Controller_Dashboard extends Controller_Base
 		
 		// check if there is internet OR if we are on HTTPS
 		// if not we dont show the functional weather widget
-		/* 
-		all went to waste, we need php5_curl installed for this to work!
+		
+		//all went to waste, we need php5_curl installed for this to work!
 		
 		$url='https://api.forecast.io';
 		$ch=curl_init();
@@ -29,11 +29,12 @@ class Controller_Dashboard extends Controller_Base
 		$result=curl_exec($ch);
 		curl_close($ch);
 		
-		*/
-		$result = null;
+		
+		//$result = null;
 		
 		$there_is_internet = false;
 		if(!empty($result)) $there_is_internet =  true;
+		//Debug::dump($there_is_internet);die;
 		$this->template->set_global('there_is_internet', $there_is_internet);
 		
 		$myarr=Custom_UserUtility::getUserProfile();

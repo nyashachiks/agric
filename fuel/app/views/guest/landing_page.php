@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="mbr-section col-md-10 col-md-offset-1 text-xs-center">
 
-        	<h1 class="libs-page-title">Agricultural App</h1>
+        	<h1 class="libs-page-title">Buyer &amp; Seller in one place</h1>
                     
             <p class="mbr-section-lead lead">
             	<span style="font-style: normal; font-family: 'Open Sans Light'; ">

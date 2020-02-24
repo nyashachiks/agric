@@ -1,7 +1,7 @@
 <?php
 
 // init with the API key
-//$f = new ForecastIO("535dd83e728190b8e669a851f4fc4825");
+$f = new ForecastIO("535dd83e728190b8e669a851f4fc4825");
 
 /* for testing we use 
 ---------------------
@@ -11,35 +11,35 @@
 	
 */
 
-
+$lat = '-17.8082294';
+$lon = '31.0757275';
+$city_name = 'Harare';
 $now = array();
 
-$req = Session::get('array');
+$req = $f->getCurrentConditions($lat,$lon);
 
-$req = Session::get('rq');
-if ( $req === false )
-{
-    echo "no";
+
+
+if(is_object($req)){
+	$now['icon'] = $req->getIcon();
+	$now['summary'] = $req->getSummary();
+	$now['city'] = $city_name;
+	$now['max_temp'] =  round($req->getApparentTemperature());
+	
+	$dateParts 	 = explode(',', $req->getTime('l, H:i A'));
+	$now['day']  =  $dateParts[0];
+	$now['time'] = $dateParts[1];
 }
-$i = 10;
-$now['icon'] = Session::get('icon');
-	$now['summary'] = Session::get('summary');
-	$now['city'] = Session::get('city');
-	
-	$now['max_temp'] =  Session::get('max_temp');
-	
-	
-	$now['day']  =  Session::get('day');
-	$now['time'] = Session::get('time');
 
 // holds a list of icon names for respective forecast days
 $icon_names    =  array();
 @$icon_names[7] = $now['icon'];
 
 
-$days = Session::get('dy');
-$temp = Session::get('tmp');
-$icon = Session::get('icn');
+// forecast for the next week, incl today
+$weekForecast = $f->getForecastWeek($lat,$lon);
+
+
 
 ?>
 
@@ -91,17 +91,19 @@ $icon = Session::get('icn');
 	
     	 <div class="col-sm-2">
         <div class="daily-weather">
-          <h2 class="day"><?php echo isset($days[$count])? $days[$count]:''; ?></h2>
-          <h3 class="degrees"><?php echo isset($temp[$count])? round($temp[$count]):'';?></h3>
+          <h2 class="day"><?php echo isset($weekForecast[$count])?
+          $weekForecast[$count]->getTime('D'):''; ?></h2>
+          <h3 class="degrees"><?php echo
+          isset($weekForecast[$count])? round($weekForecast[$count]->getMaxTemperature()):''; ?></h3>
           <span>
                  <!-- <canvas id="<?php echo 
-                 isset($icon[$count])?
-                  $icon[$count]:'';?>" width="32" height="32">
+                 isset($weekForecast[$count])?
+                 $weekForecast[$count]->getIcon():'';?>" width="32" height="32">
                   </canvas>-->
                   <canvas id="icon<?php echo $count; ?>" width="32" height="32"></canvas>
                   <?php try{
 if(isset($icon_names[$count])) 
-$icon_names[$count] = $icon[$count];
+$icon_names[$count] = $weekForecast[$count]->getIcon();
 }
 catch(Exception $e){} ?>
           </span>

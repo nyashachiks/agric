@@ -83,7 +83,7 @@
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-           Prototype <a href=""></a>
+           Software by: <a href="https://eccensys.com">Eccensys Technologies</a>
           </div>
           <div class="clearfix"></div>
         </footer>

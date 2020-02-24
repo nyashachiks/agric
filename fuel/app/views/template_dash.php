@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title><?php echo $title; ?> |  </title>
+    <title><?php echo $title; ?> | Eccensys  </title>
     <!-- lets attach css files -->
     <?php echo Asset::css(array(
     	'bootstrap.min.css',
@@ -41,7 +41,7 @@
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-           Software by: <a href=""></a>
+           Software by: <a href="https://eccensys.com">Eccensys Technologies</a>
           </div>
           <div class="clearfix"></div>
         </footer>

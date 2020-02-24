@@ -21,7 +21,7 @@
   
    <script src="<?php echo Uri::base(false);?>/assets/landing-theme/web/assets/jquery/jquery.min.js"></script>
   
-  <title><?php echo $title; ?> | </title>
+  <title><?php echo $title; ?> | Eccensys</title>
 </head>
 <body>
 <section id="ext_menu-2">
@@ -33,7 +33,7 @@
                 <div class="mbr-table-cell">
 
                    <!--  <div class="navbar-brand">
-                        <a href="#top" class="navbar-logo"><img src="<?php //echo Uri::base(false);?>/assets/landing-theme/images/logoi.png" alt="SmartFarmer" title=""></a>
+                        <a href="#top" class="navbar-logo"><img src="<?php //echo Uri::base(false);?>/assets/landing-theme/images/logoi.png" alt="SmartFarmer" title="Eccensys logo"></a>
                     </div> -->
 
                 </div>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Jan 22, 2019 at 08:04 AM
--- Server version: 5.7.23
--- PHP Version: 7.1.22
+-- Host: 127.0.0.1
+-- Generation Time: Feb 25, 2020 at 07:40 PM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sfgmb`
+-- Database: `sfgmbtest`
 --
 
 -- --------------------------------------------------------
@@ -28,8 +28,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `activation_codes`
 --
 
-DROP TABLE IF EXISTS `activation_codes`;
-CREATE TABLE IF NOT EXISTS `activation_codes` (
+CREATE TABLE `activation_codes` (
   `user_id` int(11) NOT NULL,
   `activated_by_uid` int(11) NOT NULL,
   `receipt_no` varchar(30) NOT NULL
@@ -64,15 +63,13 @@ INSERT INTO `activation_codes` (`user_id`, `activated_by_uid`, `receipt_no`) VAL
 -- Table structure for table `activities`
 --
 
-DROP TABLE IF EXISTS `activities`;
-CREATE TABLE IF NOT EXISTS `activities` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `activities` (
+  `id` int(11) UNSIGNED NOT NULL,
   `budget_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `activities`
@@ -91,19 +88,16 @@ INSERT INTO `activities` (`id`, `budget_id`, `name`, `created_at`, `updated_at`)
 -- Table structure for table `addresses`
 --
 
-DROP TABLE IF EXISTS `addresses`;
-CREATE TABLE IF NOT EXISTS `addresses` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `addresses` (
+  `id` int(11) UNSIGNED NOT NULL,
   `address` text NOT NULL,
   `province` text NOT NULL,
   `district` varchar(255) NOT NULL,
   `phone` varchar(255) DEFAULT NULL,
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
-  `country_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `city_id` (`country_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=520 DEFAULT CHARSET=utf8;
+  `country_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `addresses`
@@ -453,7 +447,12 @@ INSERT INTO `addresses` (`id`, `address`, `province`, `district`, `phone`, `crea
 (516, '1 promjo avenue', 'Harare', 'Harare', '0771111111', 1543839302, 1543839302, 252),
 (517, '1 Glenlorne', 'Harare', 'Harare', '0777777111', 1544433531, 1544433531, 252),
 (518, 'PLOT 8 URONGA SOUTH BINDURA', 'Mashonaland Central', 'Bindura', '0716587644', 1544779358, 1544779358, 252),
-(519, 'Bindura', 'Mashonaland Central', 'Bindura', '0700000000', 1544795835, 1544795835, 252);
+(519, 'Bindura', 'Mashonaland Central', 'Bindura', '0700000000', 1544795835, 1544795835, 252),
+(520, '84 Taormina ave malborough', 'Harare', 'Harare', '0719387579', 1582483041, 1582483041, 252),
+(521, '84 Taormina ave malborough', 'Midlands', 'Mberengwa', '0719387579', 1582483163, 1582483163, 252),
+(522, '84 Taormina ave malborough', 'Bulawayo', 'Bulawayo', '0719387571', 1582483252, 1582483252, 252),
+(523, '84 Taormina ave malborough', 'Bulawayo', 'Bulawayo', '0719387571', 1582483758, 1582483758, 252),
+(524, '84 Taormina ave malborough', 'Bulawayo', 'Bulawayo', '0719387574', 1582483804, 1582483804, 252);
 
 -- --------------------------------------------------------
 
@@ -461,18 +460,16 @@ INSERT INTO `addresses` (`id`, `address`, `province`, `district`, `phone`, `crea
 -- Table structure for table `bankdetails`
 --
 
-DROP TABLE IF EXISTS `bankdetails`;
-CREATE TABLE IF NOT EXISTS `bankdetails` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `bankdetails` (
+  `id` int(11) UNSIGNED NOT NULL,
   `farmer_id` int(11) DEFAULT NULL,
   `bank_name` varchar(255) NOT NULL,
   `branch_name` varchar(255) NOT NULL,
   `account_number` varchar(255) NOT NULL,
   `account_name` varchar(255) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `bankdetails`
@@ -565,7 +562,8 @@ INSERT INTO `bankdetails` (`id`, `farmer_id`, `bank_name`, `branch_name`, `accou
 (94, 246, 'Agribank                                                    ', '10115', '12453758609', 'Cash', 1543389744, 1543389744),
 (98, 250, 'Agribank                                                    ', '10000', '100', 'Tarsith', 1544433531, 1544433531),
 (99, 251, 'Agribank                                                    ', '10111', '12324345656', 'cbz', 1544779358, 1544779358),
-(100, 252, 'Agribank                                                    ', '10000', '161015', 'AMON BAMU', 1544795835, 1544795835);
+(100, 252, 'Agribank                                                    ', '10000', '161015', 'AMON BAMU', 1544795835, 1544795835),
+(101, 255, 'Agribank                                                    ', '10102', '45743458', '43244546790', 1582483804, 1582483804);
 
 -- --------------------------------------------------------
 
@@ -573,9 +571,8 @@ INSERT INTO `bankdetails` (`id`, `farmer_id`, `bank_name`, `branch_name`, `accou
 -- Table structure for table `basicformulas`
 --
 
-DROP TABLE IF EXISTS `basicformulas`;
-CREATE TABLE IF NOT EXISTS `basicformulas` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `basicformulas` (
+  `id` int(11) UNSIGNED NOT NULL,
   `product_variablecost_stage_id` int(11) DEFAULT NULL,
   `product_variablecost_id` int(11) DEFAULT NULL,
   `expectedquantity` double NOT NULL,
@@ -583,8 +580,7 @@ CREATE TABLE IF NOT EXISTS `basicformulas` (
   `measurementunits` varchar(255) NOT NULL,
   `affectedbytargetyield` tinyint(1) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -593,9 +589,8 @@ CREATE TABLE IF NOT EXISTS `basicformulas` (
 -- Table structure for table `bids`
 --
 
-DROP TABLE IF EXISTS `bids`;
-CREATE TABLE IF NOT EXISTS `bids` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `bids` (
+  `id` int(11) UNSIGNED NOT NULL,
   `productoffer_id` int(11) NOT NULL,
   `buyer_id` int(11) NOT NULL,
   `price` mediumtext NOT NULL,
@@ -604,9 +599,8 @@ CREATE TABLE IF NOT EXISTS `bids` (
   `type` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `bids`
@@ -664,7 +658,12 @@ INSERT INTO `bids` (`id`, `productoffer_id`, `buyer_id`, `price`, `quantity`, `t
 (50, 24, 77, '1', '100', '100', 'straight', '', 1518612803, 1518612803),
 (51, 26, 5, '1', '20', '20', 'straight', '', 1532502351, 1532502351),
 (52, 22, 5, '0.8', '10', '8', 'straight', '', 1532502543, 1532502543),
-(53, 26, 2, '1', '1000', '1000', 'straight', '', 1535967003, 1535967003);
+(53, 26, 2, '1', '1000', '1000', 'straight', '', 1535967003, 1535967003),
+(54, 26, 2, '1', '1000', '1000', 'straight', '', 1582654147, 1582654147),
+(55, 26, 2, '1', '1000', '1000', 'straight', '', 1582654226, 1582654226),
+(56, 26, 2, '1', '20', '20', 'straight', '', 1582655562, 1582655562),
+(57, 26, 2, '1', '20', '20', 'straight', '', 1582655714, 1582655714),
+(58, 25, 2, '1', '20', '20', 'straight', '', 1582655833, 1582655833);
 
 -- --------------------------------------------------------
 
@@ -672,9 +671,8 @@ INSERT INTO `bids` (`id`, `productoffer_id`, `buyer_id`, `price`, `quantity`, `t
 -- Table structure for table `bids2`
 --
 
-DROP TABLE IF EXISTS `bids2`;
-CREATE TABLE IF NOT EXISTS `bids2` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `bids2` (
+  `id` int(11) UNSIGNED NOT NULL,
   `productoffer_id` int(11) NOT NULL,
   `buyer_id` int(11) NOT NULL,
   `price` mediumtext NOT NULL,
@@ -683,9 +681,8 @@ CREATE TABLE IF NOT EXISTS `bids2` (
   `type` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=146 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `bids2`
@@ -844,9 +841,8 @@ INSERT INTO `bids2` (`id`, `productoffer_id`, `buyer_id`, `price`, `quantity`, `
 -- Table structure for table `branches`
 --
 
-DROP TABLE IF EXISTS `branches`;
-CREATE TABLE IF NOT EXISTS `branches` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `branches` (
+  `id` int(11) UNSIGNED NOT NULL,
   `branch_code` varchar(255) NOT NULL,
   `bank_name` varchar(255) NOT NULL,
   `bank_address` varchar(255) NOT NULL,
@@ -854,9 +850,8 @@ CREATE TABLE IF NOT EXISTS `branches` (
   `branch_name` varchar(255) NOT NULL,
   `swift_code` varchar(255) NOT NULL,
   `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=472 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `branches`
@@ -1343,18 +1338,16 @@ INSERT INTO `branches` (`id`, `branch_code`, `bank_name`, `bank_address`, `bank_
 -- Table structure for table `budgets`
 --
 
-DROP TABLE IF EXISTS `budgets`;
-CREATE TABLE IF NOT EXISTS `budgets` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `budgets` (
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `product` varchar(255) NOT NULL,
   `region` varchar(255) NOT NULL,
   `soiltype` varchar(255) NOT NULL,
   `user_id` int(11) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `budgets`
@@ -1371,14 +1364,12 @@ INSERT INTO `budgets` (`id`, `name`, `product`, `region`, `soiltype`, `user_id`,
 -- Table structure for table `campaigns`
 --
 
-DROP TABLE IF EXISTS `campaigns`;
-CREATE TABLE IF NOT EXISTS `campaigns` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `campaigns` (
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `campaigns`
@@ -1396,15 +1387,13 @@ INSERT INTO `campaigns` (`id`, `name`, `created_at`, `updated_at`) VALUES
 -- Table structure for table `campaign_users`
 --
 
-DROP TABLE IF EXISTS `campaign_users`;
-CREATE TABLE IF NOT EXISTS `campaign_users` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `campaign_users` (
+  `id` int(11) UNSIGNED NOT NULL,
   `campaign_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `campaign_users`
@@ -1426,14 +1415,12 @@ INSERT INTO `campaign_users` (`id`, `campaign_id`, `user_id`, `created_at`, `upd
 -- Table structure for table `children`
 --
 
-DROP TABLE IF EXISTS `children`;
-CREATE TABLE IF NOT EXISTS `children` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `children` (
+  `id` int(11) UNSIGNED NOT NULL,
   `mid` int(11) NOT NULL,
   `pid` int(11) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1442,15 +1429,13 @@ CREATE TABLE IF NOT EXISTS `children` (
 -- Table structure for table `cities`
 --
 
-DROP TABLE IF EXISTS `cities`;
-CREATE TABLE IF NOT EXISTS `cities` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `cities` (
+  `id` int(11) UNSIGNED NOT NULL,
   `city` varchar(255) NOT NULL,
   `country_id` int(11) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `cities`
@@ -1493,17 +1478,15 @@ INSERT INTO `cities` (`id`, `city`, `country_id`, `created_at`, `updated_at`) VA
 -- Table structure for table `cocodes`
 --
 
-DROP TABLE IF EXISTS `cocodes`;
-CREATE TABLE IF NOT EXISTS `cocodes` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `cocodes` (
+  `id` int(11) UNSIGNED NOT NULL,
   `co_code` varchar(255) NOT NULL,
   `co_name` varchar(255) NOT NULL,
   `city` varchar(255) NOT NULL,
   `currency` varchar(255) NOT NULL,
   `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `cocodes`
@@ -1519,14 +1502,12 @@ INSERT INTO `cocodes` (`id`, `co_code`, `co_name`, `city`, `currency`, `created_
 -- Table structure for table `companies`
 --
 
-DROP TABLE IF EXISTS `companies`;
-CREATE TABLE IF NOT EXISTS `companies` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `companies` (
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `companies`
@@ -1556,15 +1537,13 @@ INSERT INTO `companies` (`id`, `name`, `created_at`, `updated_at`) VALUES
 -- Table structure for table `condtions`
 --
 
-DROP TABLE IF EXISTS `condtions`;
-CREATE TABLE IF NOT EXISTS `condtions` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `condtions` (
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `condtions`
@@ -1579,9 +1558,8 @@ INSERT INTO `condtions` (`id`, `name`, `description`, `created_at`, `updated_at`
 -- Table structure for table `contractapplications`
 --
 
-DROP TABLE IF EXISTS `contractapplications`;
-CREATE TABLE IF NOT EXISTS `contractapplications` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `contractapplications` (
+  `id` int(11) UNSIGNED NOT NULL,
   `farm_id` int(11) NOT NULL,
   `farmer_id` int(11) NOT NULL,
   `season_id` int(11) NOT NULL,
@@ -1592,9 +1570,8 @@ CREATE TABLE IF NOT EXISTS `contractapplications` (
   `measure_unit` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `contractapplications`
@@ -1653,17 +1630,15 @@ INSERT INTO `contractapplications` (`id`, `farm_id`, `farmer_id`, `season_id`, `
 -- Table structure for table `contractortrackers`
 --
 
-DROP TABLE IF EXISTS `contractortrackers`;
-CREATE TABLE IF NOT EXISTS `contractortrackers` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `contractortrackers` (
+  `id` int(11) NOT NULL,
   `contracttracker_id` int(11) NOT NULL,
   `notes` text NOT NULL,
   `date` date NOT NULL,
   `status` varchar(50) NOT NULL,
   `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  `updated_at` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `contractortrackers`
@@ -1681,16 +1656,14 @@ INSERT INTO `contractortrackers` (`id`, `contracttracker_id`, `notes`, `date`, `
 -- Table structure for table `contractquantities`
 --
 
-DROP TABLE IF EXISTS `contractquantities`;
-CREATE TABLE IF NOT EXISTS `contractquantities` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `contractquantities` (
+  `id` int(11) UNSIGNED NOT NULL,
   `contractapplication_id` int(11) NOT NULL,
   `projectStagesTasksVariableCost_id` int(11) NOT NULL,
   `quantities` double NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=291 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `contractquantities`
@@ -1955,9 +1928,8 @@ INSERT INTO `contractquantities` (`id`, `contractapplication_id`, `projectStages
 -- Table structure for table `contracts`
 --
 
-DROP TABLE IF EXISTS `contracts`;
-CREATE TABLE IF NOT EXISTS `contracts` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `contracts` (
+  `id` int(11) UNSIGNED NOT NULL,
   `contractapplication_id` int(11) NOT NULL,
   `contractor_id` int(11) NOT NULL,
   `loan_amount` double NOT NULL,
@@ -1968,9 +1940,8 @@ CREATE TABLE IF NOT EXISTS `contracts` (
   `status` varchar(255) NOT NULL,
   `comment` varchar(255) DEFAULT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `contracts`
@@ -2029,15 +2000,13 @@ INSERT INTO `contracts` (`id`, `contractapplication_id`, `contractor_id`, `loan_
 -- Table structure for table `contractstarts`
 --
 
-DROP TABLE IF EXISTS `contractstarts`;
-CREATE TABLE IF NOT EXISTS `contractstarts` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `contractstarts` (
+  `id` int(11) UNSIGNED NOT NULL,
   `contract_id` int(11) NOT NULL,
   `startdate` int(11) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `contractstarts`
@@ -2074,9 +2043,8 @@ INSERT INTO `contractstarts` (`id`, `contract_id`, `startdate`, `created_at`, `u
 -- Table structure for table `contracttrackers`
 --
 
-DROP TABLE IF EXISTS `contracttrackers`;
-CREATE TABLE IF NOT EXISTS `contracttrackers` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `contracttrackers` (
+  `id` int(11) UNSIGNED NOT NULL,
   `project_stage_task_id` int(11) NOT NULL,
   `enddate` int(11) NOT NULL,
   `notes` text NOT NULL,
@@ -2084,9 +2052,8 @@ CREATE TABLE IF NOT EXISTS `contracttrackers` (
   `picture_saved_as` varchar(255) DEFAULT NULL,
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
-  `status` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `status` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `contracttrackers`
@@ -2102,17 +2069,15 @@ INSERT INTO `contracttrackers` (`id`, `project_stage_task_id`, `enddate`, `notes
 -- Table structure for table `contract_disburses`
 --
 
-DROP TABLE IF EXISTS `contract_disburses`;
-CREATE TABLE IF NOT EXISTS `contract_disburses` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `contract_disburses` (
+  `id` int(11) UNSIGNED NOT NULL,
   `contractquantities_id` int(11) NOT NULL,
   `userdisbursed` int(11) NOT NULL,
   `date` date DEFAULT NULL,
   `quantities` double NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=149 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `contract_disburses`
@@ -2274,16 +2239,14 @@ INSERT INTO `contract_disburses` (`id`, `contractquantities_id`, `userdisbursed`
 -- Table structure for table `conversions`
 --
 
-DROP TABLE IF EXISTS `conversions`;
-CREATE TABLE IF NOT EXISTS `conversions` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `conversions` (
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `quantity` mediumtext NOT NULL,
   `measurement_id` int(11) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `conversions`
@@ -2312,15 +2275,13 @@ INSERT INTO `conversions` (`id`, `name`, `quantity`, `measurement_id`, `created_
 -- Table structure for table `correctivemeasures`
 --
 
-DROP TABLE IF EXISTS `correctivemeasures`;
-CREATE TABLE IF NOT EXISTS `correctivemeasures` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `correctivemeasures` (
+  `id` int(11) UNSIGNED NOT NULL,
   `description` text NOT NULL,
   `disease_id` int(11) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `correctivemeasures`
@@ -2347,15 +2308,13 @@ INSERT INTO `correctivemeasures` (`id`, `description`, `disease_id`, `created_at
 -- Table structure for table `countries`
 --
 
-DROP TABLE IF EXISTS `countries`;
-CREATE TABLE IF NOT EXISTS `countries` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `countries` (
+  `id` int(11) NOT NULL,
   `country_code` varchar(2) NOT NULL DEFAULT '',
   `country_name` varchar(100) NOT NULL DEFAULT '',
   `created_at` int(11) NOT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=253 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `countries`
@@ -2621,17 +2580,15 @@ INSERT INTO `countries` (`id`, `country_code`, `country_name`, `created_at`, `up
 -- Table structure for table `depots`
 --
 
-DROP TABLE IF EXISTS `depots`;
-CREATE TABLE IF NOT EXISTS `depots` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `depots` (
+  `id` int(11) UNSIGNED NOT NULL,
   `plant` varchar(255) NOT NULL,
   `short_name` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `city` varchar(255) NOT NULL,
   `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `depots`
@@ -2739,17 +2696,15 @@ INSERT INTO `depots` (`id`, `plant`, `short_name`, `name`, `city`, `created_at`,
 -- Table structure for table `diseases`
 --
 
-DROP TABLE IF EXISTS `diseases`;
-CREATE TABLE IF NOT EXISTS `diseases` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `diseases` (
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `product_id` int(11) NOT NULL,
   `image_name` varchar(255) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `diseases`
@@ -2776,15 +2731,13 @@ INSERT INTO `diseases` (`id`, `name`, `description`, `product_id`, `image_name`,
 -- Table structure for table `diseasesymptoms`
 --
 
-DROP TABLE IF EXISTS `diseasesymptoms`;
-CREATE TABLE IF NOT EXISTS `diseasesymptoms` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `diseasesymptoms` (
+  `id` int(11) UNSIGNED NOT NULL,
   `disease_id` int(11) NOT NULL,
   `symptom_id` int(11) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `diseasesymptoms`
@@ -2841,13 +2794,11 @@ INSERT INTO `diseasesymptoms` (`id`, `disease_id`, `symptom_id`, `created_at`, `
 -- Table structure for table `districts_list`
 --
 
-DROP TABLE IF EXISTS `districts_list`;
-CREATE TABLE IF NOT EXISTS `districts_list` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `districts_list` (
+  `id` int(11) UNSIGNED NOT NULL,
   `province_id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=406 DEFAULT CHARSET=utf8;
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `districts_list`
@@ -3266,17 +3217,15 @@ INSERT INTO `districts_list` (`id`, `province_id`, `name`) VALUES
 -- Table structure for table `documents`
 --
 
-DROP TABLE IF EXISTS `documents`;
-CREATE TABLE IF NOT EXISTS `documents` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `documents` (
+  `id` int(11) UNSIGNED NOT NULL,
   `user_id` int(11) NOT NULL,
   `description` text NOT NULL,
   `saved_as` varchar(255) NOT NULL,
   `actual_name` varchar(255) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `documents`
@@ -3294,7 +3243,8 @@ INSERT INTO `documents` (`id`, `user_id`, `description`, `saved_as`, `actual_nam
 (19, 9, 'GRAIN_MARKETING_ACT_18_14', '6b951bdc72a57c74f1d410c966a0c3b3.pdf', 'GRAIN_MARKETING_ACT_18_14.pdf', 1471505100, 1471505100),
 (20, 53, 'test', '68f2bdf9d41d51e0b5b8d5cdd88a758d.pdf', 'AndARMarker.pdf', 1475146825, 1475146825),
 (21, 2, 'Life cycle of crops.', 'cfa709a4d7c2f9f0fb7049dae436d76b.docx', 'Workflow.docx', 1493386686, 1493386686),
-(22, 57, 'optimization of appicatios', '7567aa30456e54b0dda5f2b30e176153.pdf', 'Seo-2017-Search-Engine-.pdf', 1493387056, 1493387056);
+(22, 57, 'optimization of appicatios', '7567aa30456e54b0dda5f2b30e176153.pdf', 'Seo-2017-Search-Engine-.pdf', 1493387056, 1493387056),
+(23, 2, 'test pdf', '3de74d2b2ea9aa2dbe5eb64c81bb48ec.pdf', 'test.pdf', 1582477569, 1582477569);
 
 -- --------------------------------------------------------
 
@@ -3302,18 +3252,16 @@ INSERT INTO `documents` (`id`, `user_id`, `description`, `saved_as`, `actual_nam
 -- Table structure for table `dropdowns`
 --
 
-DROP TABLE IF EXISTS `dropdowns`;
-CREATE TABLE IF NOT EXISTS `dropdowns` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `dropdowns` (
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `url` text NOT NULL,
   `mainmenu_id` int(11) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
   `position` int(11) NOT NULL,
-  `visible` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8;
+  `visible` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `dropdowns`
@@ -3366,15 +3314,13 @@ INSERT INTO `dropdowns` (`id`, `name`, `url`, `mainmenu_id`, `created_at`, `upda
 -- Table structure for table `farmguides`
 --
 
-DROP TABLE IF EXISTS `farmguides`;
-CREATE TABLE IF NOT EXISTS `farmguides` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `farmguides` (
+  `id` int(11) UNSIGNED NOT NULL,
   `activity_id` int(11) NOT NULL,
   `description` varchar(255) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `farmguides`
@@ -3395,9 +3341,8 @@ INSERT INTO `farmguides` (`id`, `activity_id`, `description`, `created_at`, `upd
 -- Table structure for table `farms`
 --
 
-DROP TABLE IF EXISTS `farms`;
-CREATE TABLE IF NOT EXISTS `farms` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `farms` (
+  `id` int(11) UNSIGNED NOT NULL,
   `user_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL,
@@ -3410,9 +3355,8 @@ CREATE TABLE IF NOT EXISTS `farms` (
   `longitude` varchar(255) NOT NULL,
   `latitude` varchar(255) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `farms`
@@ -3427,14 +3371,12 @@ INSERT INTO `farms` (`id`, `user_id`, `name`, `type`, `arable_size`, `soil`, `si
 -- Table structure for table `flags`
 --
 
-DROP TABLE IF EXISTS `flags`;
-CREATE TABLE IF NOT EXISTS `flags` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `flags` (
+  `id` int(11) NOT NULL,
   `iso` varchar(10) NOT NULL,
   `country` varchar(10) NOT NULL,
-  `code` varchar(10) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=424 DEFAULT CHARSET=latin1;
+  `code` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `flags`
@@ -3659,15 +3601,13 @@ INSERT INTO `flags` (`id`, `iso`, `country`, `code`) VALUES
 -- Table structure for table `grades`
 --
 
-DROP TABLE IF EXISTS `grades`;
-CREATE TABLE IF NOT EXISTS `grades` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `grades` (
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `grades`
@@ -3686,15 +3626,13 @@ INSERT INTO `grades` (`id`, `name`, `description`, `created_at`, `updated_at`) V
 -- Table structure for table `gradingcriterias`
 --
 
-DROP TABLE IF EXISTS `gradingcriterias`;
-CREATE TABLE IF NOT EXISTS `gradingcriterias` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `gradingcriterias` (
+  `id` int(11) UNSIGNED NOT NULL,
   `crit_name` varchar(255) NOT NULL,
   `short_name` varchar(255) NOT NULL,
   `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `gradingcriterias`
@@ -3717,9 +3655,8 @@ INSERT INTO `gradingcriterias` (`id`, `crit_name`, `short_name`, `created_at`, `
 -- Table structure for table `gradings`
 --
 
-DROP TABLE IF EXISTS `gradings`;
-CREATE TABLE IF NOT EXISTS `gradings` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `gradings` (
+  `id` int(11) UNSIGNED NOT NULL,
   `inspection_lot` varchar(255) NOT NULL,
   `material_id` int(11) NOT NULL,
   `quality_score` int(11) NOT NULL,
@@ -3729,8 +3666,7 @@ CREATE TABLE IF NOT EXISTS `gradings` (
   `quantity` double NOT NULL,
   `vendor_number` varchar(255) NOT NULL,
   `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -3739,9 +3675,8 @@ CREATE TABLE IF NOT EXISTS `gradings` (
 -- Table structure for table `grainreceipts`
 --
 
-DROP TABLE IF EXISTS `grainreceipts`;
-CREATE TABLE IF NOT EXISTS `grainreceipts` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `grainreceipts` (
+  `id` int(11) UNSIGNED NOT NULL,
   `farmer_id` int(11) NOT NULL,
   `grain_id` int(11) NOT NULL,
   `qty` varchar(255) NOT NULL,
@@ -3749,9 +3684,8 @@ CREATE TABLE IF NOT EXISTS `grainreceipts` (
   `value` varchar(255) NOT NULL,
   `received_by` int(11) NOT NULL,
   `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `grainreceipts`
@@ -3771,16 +3705,14 @@ INSERT INTO `grainreceipts` (`id`, `farmer_id`, `grain_id`, `qty`, `grade_id`, `
 -- Table structure for table `grainreceiptsdata`
 --
 
-DROP TABLE IF EXISTS `grainreceiptsdata`;
-CREATE TABLE IF NOT EXISTS `grainreceiptsdata` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `grainreceiptsdata` (
+  `id` int(11) UNSIGNED NOT NULL,
   `receipt_id` int(11) NOT NULL,
   `key` varchar(255) NOT NULL,
   `value` varchar(255) NOT NULL,
   `created_at` int(11) UNSIGNED DEFAULT NULL,
-  `updated_at` int(11) UNSIGNED DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `grainreceiptsdata`
@@ -3812,15 +3744,13 @@ INSERT INTO `grainreceiptsdata` (`id`, `receipt_id`, `key`, `value`, `created_at
 -- Table structure for table `grains`
 --
 
-DROP TABLE IF EXISTS `grains`;
-CREATE TABLE IF NOT EXISTS `grains` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `grains` (
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `grains`
@@ -3840,9 +3770,8 @@ INSERT INTO `grains` (`id`, `name`, `description`, `created_at`, `updated_at`) V
 -- Table structure for table `inputs`
 --
 
-DROP TABLE IF EXISTS `inputs`;
-CREATE TABLE IF NOT EXISTS `inputs` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `inputs` (
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `activity_id` int(11) NOT NULL,
   `unit` varchar(255) NOT NULL,
@@ -3850,9 +3779,8 @@ CREATE TABLE IF NOT EXISTS `inputs` (
   `quantity` mediumtext NOT NULL,
   `total_cost` mediumtext NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `inputs`
@@ -3870,9 +3798,8 @@ INSERT INTO `inputs` (`id`, `name`, `activity_id`, `unit`, `cost_per_unit`, `qua
 -- Table structure for table `labors`
 --
 
-DROP TABLE IF EXISTS `labors`;
-CREATE TABLE IF NOT EXISTS `labors` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `labors` (
+  `id` int(11) UNSIGNED NOT NULL,
   `skill_name` varchar(255) NOT NULL,
   `rate` double NOT NULL,
   `rate_time` varchar(255) NOT NULL,
@@ -3881,9 +3808,8 @@ CREATE TABLE IF NOT EXISTS `labors` (
   `saved_as` varchar(255) NOT NULL,
   `actual_name` varchar(255) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `labors`
@@ -3904,9 +3830,8 @@ INSERT INTO `labors` (`id`, `skill_name`, `rate`, `rate_time`, `description`, `l
 -- Table structure for table `linktables`
 --
 
-DROP TABLE IF EXISTS `linktables`;
-CREATE TABLE IF NOT EXISTS `linktables` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `linktables` (
+  `id` int(11) UNSIGNED NOT NULL,
   `product_id` int(11) NOT NULL,
   `region_id` int(11) NOT NULL,
   `condition_id` int(11) NOT NULL,
@@ -3918,8 +3843,7 @@ CREATE TABLE IF NOT EXISTS `linktables` (
   `affectedbytargetyield` tinyint(1) NOT NULL,
   `todo` text NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -3928,16 +3852,14 @@ CREATE TABLE IF NOT EXISTS `linktables` (
 -- Table structure for table `loans`
 --
 
-DROP TABLE IF EXISTS `loans`;
-CREATE TABLE IF NOT EXISTS `loans` (
-  `loanid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `loans` (
+  `loanid` int(11) NOT NULL,
   `issue_date` varchar(20) NOT NULL,
   `agronomist` varchar(255) NOT NULL,
   `farmer` varchar(255) NOT NULL,
   `amount` decimal(10,2) NOT NULL,
-  `status` varchar(255) NOT NULL,
-  PRIMARY KEY (`loanid`)
-) ENGINE=InnoDB AUTO_INCREMENT=7013 DEFAULT CHARSET=latin1;
+  `status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `loans`
@@ -3963,18 +3885,16 @@ INSERT INTO `loans` (`loanid`, `issue_date`, `agronomist`, `farmer`, `amount`, `
 -- Table structure for table `logistics`
 --
 
-DROP TABLE IF EXISTS `logistics`;
-CREATE TABLE IF NOT EXISTS `logistics` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `logistics` (
+  `id` int(11) UNSIGNED NOT NULL,
   `equipmentname` varchar(255) NOT NULL,
   `capacity` double NOT NULL,
   `rateperhour` double NOT NULL,
   `description` varchar(255) NOT NULL,
   `supplier_id` int(11) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `logistics`
@@ -3995,9 +3915,8 @@ INSERT INTO `logistics` (`id`, `equipmentname`, `capacity`, `rateperhour`, `desc
 -- Table structure for table `mainmenus`
 --
 
-DROP TABLE IF EXISTS `mainmenus`;
-CREATE TABLE IF NOT EXISTS `mainmenus` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `mainmenus` (
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `url` text NOT NULL,
   `position` varchar(255) NOT NULL,
@@ -4005,9 +3924,8 @@ CREATE TABLE IF NOT EXISTS `mainmenus` (
   `updated_at` int(11) DEFAULT NULL,
   `aligned` varchar(50) NOT NULL,
   `visible` int(11) NOT NULL,
-  `icon` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+  `icon` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `mainmenus`
@@ -4029,9 +3947,8 @@ INSERT INTO `mainmenus` (`id`, `name`, `url`, `position`, `created_at`, `updated
 -- Table structure for table `mainmenus2`
 --
 
-DROP TABLE IF EXISTS `mainmenus2`;
-CREATE TABLE IF NOT EXISTS `mainmenus2` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `mainmenus2` (
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `url` text NOT NULL,
   `position` varchar(255) NOT NULL,
@@ -4039,9 +3956,8 @@ CREATE TABLE IF NOT EXISTS `mainmenus2` (
   `updated_at` int(11) DEFAULT NULL,
   `aligned` varchar(50) NOT NULL,
   `visible` int(11) NOT NULL,
-  `icon` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+  `icon` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `mainmenus2`
@@ -4064,16 +3980,14 @@ INSERT INTO `mainmenus2` (`id`, `name`, `url`, `position`, `created_at`, `update
 -- Table structure for table `markets`
 --
 
-DROP TABLE IF EXISTS `markets`;
-CREATE TABLE IF NOT EXISTS `markets` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `markets` (
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `location` text NOT NULL,
   `address_id` int(11) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `markets`
@@ -4094,16 +4008,14 @@ INSERT INTO `markets` (`id`, `name`, `location`, `address_id`, `created_at`, `up
 -- Table structure for table `market_places`
 --
 
-DROP TABLE IF EXISTS `market_places`;
-CREATE TABLE IF NOT EXISTS `market_places` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `market_places` (
+  `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `lat` float NOT NULL,
   `lon` float NOT NULL,
   `zoom` int(11) NOT NULL,
-  `html` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+  `html` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `market_places`
@@ -4133,13 +4045,11 @@ INSERT INTO `market_places` (`id`, `title`, `lat`, `lon`, `zoom`, `html`) VALUES
 -- Table structure for table `masters`
 --
 
-DROP TABLE IF EXISTS `masters`;
-CREATE TABLE IF NOT EXISTS `masters` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `masters` (
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -4148,15 +4058,13 @@ CREATE TABLE IF NOT EXISTS `masters` (
 -- Table structure for table `materials`
 --
 
-DROP TABLE IF EXISTS `materials`;
-CREATE TABLE IF NOT EXISTS `materials` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `materials` (
+  `id` int(11) UNSIGNED NOT NULL,
   `code` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=146 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `materials`
@@ -4315,15 +4223,13 @@ INSERT INTO `materials` (`id`, `code`, `description`, `created_at`, `updated_at`
 -- Table structure for table `measurements`
 --
 
-DROP TABLE IF EXISTS `measurements`;
-CREATE TABLE IF NOT EXISTS `measurements` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `measurements` (
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `unit` varchar(255) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `measurements`
@@ -4342,8 +4248,7 @@ INSERT INTO `measurements` (`id`, `name`, `unit`, `created_at`, `updated_at`) VA
 -- Table structure for table `migration`
 --
 
-DROP TABLE IF EXISTS `migration`;
-CREATE TABLE IF NOT EXISTS `migration` (
+CREATE TABLE `migration` (
   `type` varchar(25) NOT NULL,
   `name` varchar(50) NOT NULL,
   `migration` varchar(100) NOT NULL DEFAULT ''
@@ -4463,8 +4368,7 @@ INSERT INTO `migration` (`type`, `name`, `migration`) VALUES
 -- Table structure for table `nasty_tricks`
 --
 
-DROP TABLE IF EXISTS `nasty_tricks`;
-CREATE TABLE IF NOT EXISTS `nasty_tricks` (
+CREATE TABLE `nasty_tricks` (
   `target` int(11) NOT NULL,
   `item` varchar(255) NOT NULL,
   `measure` varchar(255) NOT NULL,
@@ -4742,14 +4646,12 @@ INSERT INTO `nasty_tricks` (`target`, `item`, `measure`, `approved`, `disbursed`
 -- Table structure for table `parents`
 --
 
-DROP TABLE IF EXISTS `parents`;
-CREATE TABLE IF NOT EXISTS `parents` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `parents` (
+  `id` int(11) UNSIGNED NOT NULL,
   `mid` int(11) NOT NULL,
   `stage` int(11) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -4758,15 +4660,13 @@ CREATE TABLE IF NOT EXISTS `parents` (
 -- Table structure for table `paymentterms`
 --
 
-DROP TABLE IF EXISTS `paymentterms`;
-CREATE TABLE IF NOT EXISTS `paymentterms` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `paymentterms` (
+  `id` int(11) UNSIGNED NOT NULL,
   `code` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `paymentterms`
@@ -4787,9 +4687,8 @@ INSERT INTO `paymentterms` (`id`, `code`, `description`, `created_at`, `updated_
 -- Table structure for table `permits`
 --
 
-DROP TABLE IF EXISTS `permits`;
-CREATE TABLE IF NOT EXISTS `permits` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `permits` (
+  `id` int(11) UNSIGNED NOT NULL,
   `applicant_id` int(11) NOT NULL,
   `doc_name` varchar(100) NOT NULL,
   `status` int(11) NOT NULL,
@@ -4802,9 +4701,8 @@ CREATE TABLE IF NOT EXISTS `permits` (
   `approv_user_id` int(11) DEFAULT NULL,
   `measurement_id` int(11) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `permits`
@@ -4837,9 +4735,8 @@ INSERT INTO `permits` (`id`, `applicant_id`, `doc_name`, `status`, `commodity`, 
 -- Table structure for table `productoffers`
 --
 
-DROP TABLE IF EXISTS `productoffers`;
-CREATE TABLE IF NOT EXISTS `productoffers` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `productoffers` (
+  `id` int(11) UNSIGNED NOT NULL,
   `product_id` int(11) NOT NULL,
   `farmer_id` int(11) NOT NULL,
   `market_id` int(11) NOT NULL,
@@ -4853,9 +4750,8 @@ CREATE TABLE IF NOT EXISTS `productoffers` (
   `count` int(11) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
-  `image_name` varchar(256) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+  `image_name` varchar(256) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `productoffers`
@@ -4881,8 +4777,7 @@ INSERT INTO `productoffers` (`id`, `product_id`, `farmer_id`, `market_id`, `pric
 (22, 1, 29, 3, '0.8', 'Fresh ripe apples', '1000', '10', 'open', 'Ungraded', 440, 14, 1493720408, 1532502543, '57d5c5dd79f1ad8ebb7660aa5f4c962c.jpg'),
 (23, 1, 78, 3, '1', 'fresh maize available at your door step at reasonable prices', '100', '10', 'open', 'Ungraded', 90, 1, 1518081609, 1518594066, '27acd45077ce4ae916d292622073f016.jpg'),
 (24, 1, 79, 8, '1', 'A- grade quality maize ', '500', '50', 'open', 'Ungraded', 180, 3, 1518081911, 1518612804, 'c201a3e5a2f5c1a6c00418ecb60c0366.JPG'),
-(25, 1, 81, 2, '1', 'fresh maize for sale', '100', '10', 'open', 'Ungraded', 100, 0, 1518083113, 1518083113, '72ca6a0e5243c0f6d7b31f4d33a7a065.jpg'),
-(26, 1, 82, 2, '1', 'maize is delicious mufunge', '200000', '20', 'open', 'Ungraded', 198980, 2, 1518093173, 1535967003, 'c6bc77a11fdbe5102244fffbdd23502b.jpg');
+(25, 1, 81, 2, '1', 'fresh maize for sale', '100', '10', 'open', 'Ungraded', 80, 1, 1518083113, 1582655833, '72ca6a0e5243c0f6d7b31f4d33a7a065.jpg');
 
 -- --------------------------------------------------------
 
@@ -4890,9 +4785,8 @@ INSERT INTO `productoffers` (`id`, `product_id`, `farmer_id`, `market_id`, `pric
 -- Table structure for table `productoffers21`
 --
 
-DROP TABLE IF EXISTS `productoffers21`;
-CREATE TABLE IF NOT EXISTS `productoffers21` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `productoffers21` (
+  `id` int(11) UNSIGNED NOT NULL,
   `product_id` int(11) NOT NULL,
   `farmer_id` int(11) NOT NULL,
   `market_id` int(11) NOT NULL,
@@ -4906,9 +4800,8 @@ CREATE TABLE IF NOT EXISTS `productoffers21` (
   `count` int(11) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
-  `image_name` varchar(256) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+  `image_name` varchar(256) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `productoffers21`
@@ -4945,16 +4838,14 @@ INSERT INTO `productoffers21` (`id`, `product_id`, `farmer_id`, `market_id`, `pr
 -- Table structure for table `products`
 --
 
-DROP TABLE IF EXISTS `products`;
-CREATE TABLE IF NOT EXISTS `products` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `products` (
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `measurement_id` int(11) NOT NULL,
   `producttype_id` int(11) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `products`
@@ -5047,15 +4938,13 @@ INSERT INTO `products` (`id`, `name`, `measurement_id`, `producttype_id`, `creat
 -- Table structure for table `producttypes`
 --
 
-DROP TABLE IF EXISTS `producttypes`;
-CREATE TABLE IF NOT EXISTS `producttypes` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `producttypes` (
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `producttypes`
@@ -5077,17 +4966,15 @@ INSERT INTO `producttypes` (`id`, `name`, `description`, `created_at`, `updated_
 -- Table structure for table `product_variablecost_complexformulas`
 --
 
-DROP TABLE IF EXISTS `product_variablecost_complexformulas`;
-CREATE TABLE IF NOT EXISTS `product_variablecost_complexformulas` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `product_variablecost_complexformulas` (
+  `id` int(11) UNSIGNED NOT NULL,
   `affectedhectars` double NOT NULL,
   `rate` double NOT NULL,
   `denominator` double NOT NULL,
   `price` double NOT NULL,
   `product_variablecost_id` int(11) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -5096,14 +4983,12 @@ CREATE TABLE IF NOT EXISTS `product_variablecost_complexformulas` (
 -- Table structure for table `product_variablecost_stages`
 --
 
-DROP TABLE IF EXISTS `product_variablecost_stages`;
-CREATE TABLE IF NOT EXISTS `product_variablecost_stages` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `product_variablecost_stages` (
+  `id` int(11) UNSIGNED NOT NULL,
   `product_variablecost_id` int(11) NOT NULL,
   `stage_id` int(11) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -5112,15 +4997,13 @@ CREATE TABLE IF NOT EXISTS `product_variablecost_stages` (
 -- Table structure for table `product_variablecost_stage_targetyields`
 --
 
-DROP TABLE IF EXISTS `product_variablecost_stage_targetyields`;
-CREATE TABLE IF NOT EXISTS `product_variablecost_stage_targetyields` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `product_variablecost_stage_targetyields` (
+  `id` int(11) UNSIGNED NOT NULL,
   `value` double NOT NULL,
   `targetyield_id` int(11) NOT NULL,
   `product_variablecost_stage_id` int(11) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -5129,16 +5012,14 @@ CREATE TABLE IF NOT EXISTS `product_variablecost_stage_targetyields` (
 -- Table structure for table `profilepics`
 --
 
-DROP TABLE IF EXISTS `profilepics`;
-CREATE TABLE IF NOT EXISTS `profilepics` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `profilepics` (
+  `id` int(11) UNSIGNED NOT NULL,
   `user_id` int(11) NOT NULL,
   `saved_as` varchar(255) NOT NULL,
   `actual_name` varchar(255) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `profilepics`
@@ -5175,16 +5056,14 @@ INSERT INTO `profilepics` (`id`, `user_id`, `saved_as`, `actual_name`, `created_
 -- Table structure for table `projects`
 --
 
-DROP TABLE IF EXISTS `projects`;
-CREATE TABLE IF NOT EXISTS `projects` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `projects` (
+  `id` int(11) UNSIGNED NOT NULL,
   `product_id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `expected_yield` mediumint(9) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `projects`
@@ -5210,13 +5089,11 @@ INSERT INTO `projects` (`id`, `product_id`, `name`, `expected_yield`, `created_a
 -- Table structure for table `project_conditions`
 --
 
-DROP TABLE IF EXISTS `project_conditions`;
-CREATE TABLE IF NOT EXISTS `project_conditions` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `project_conditions` (
+  `id` int(11) UNSIGNED NOT NULL,
   `project_id` int(11) NOT NULL,
-  `condition_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+  `condition_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `project_conditions`
@@ -5242,15 +5119,13 @@ INSERT INTO `project_conditions` (`id`, `project_id`, `condition_id`) VALUES
 -- Table structure for table `project_filtered_resources`
 --
 
-DROP TABLE IF EXISTS `project_filtered_resources`;
-CREATE TABLE IF NOT EXISTS `project_filtered_resources` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `project_filtered_resources` (
+  `id` int(11) UNSIGNED NOT NULL,
   `project_id` int(11) NOT NULL,
   `variablecost_id` int(11) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `project_filtered_resources`
@@ -5273,15 +5148,13 @@ INSERT INTO `project_filtered_resources` (`id`, `project_id`, `variablecost_id`,
 -- Table structure for table `project_filtered_tasks`
 --
 
-DROP TABLE IF EXISTS `project_filtered_tasks`;
-CREATE TABLE IF NOT EXISTS `project_filtered_tasks` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `project_filtered_tasks` (
+  `id` int(11) UNSIGNED NOT NULL,
   `project_id` int(11) NOT NULL,
   `task_id` int(11) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `project_filtered_tasks`
@@ -5305,13 +5178,11 @@ INSERT INTO `project_filtered_tasks` (`id`, `project_id`, `task_id`, `created_at
 -- Table structure for table `project_regions`
 --
 
-DROP TABLE IF EXISTS `project_regions`;
-CREATE TABLE IF NOT EXISTS `project_regions` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `project_regions` (
+  `id` int(11) UNSIGNED NOT NULL,
   `project_id` int(11) NOT NULL,
-  `region_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+  `region_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `project_regions`
@@ -5337,13 +5208,11 @@ INSERT INTO `project_regions` (`id`, `project_id`, `region_id`) VALUES
 -- Table structure for table `project_soiltypes`
 --
 
-DROP TABLE IF EXISTS `project_soiltypes`;
-CREATE TABLE IF NOT EXISTS `project_soiltypes` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `project_soiltypes` (
+  `id` int(11) UNSIGNED NOT NULL,
   `project_id` int(11) NOT NULL,
-  `soiltype_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+  `soiltype_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `project_soiltypes`
@@ -5369,15 +5238,13 @@ INSERT INTO `project_soiltypes` (`id`, `project_id`, `soiltype_id`) VALUES
 -- Table structure for table `project_stages`
 --
 
-DROP TABLE IF EXISTS `project_stages`;
-CREATE TABLE IF NOT EXISTS `project_stages` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `project_stages` (
+  `id` int(11) UNSIGNED NOT NULL,
   `project_id` int(11) NOT NULL,
   `stage_id` int(11) NOT NULL,
   `position` int(11) DEFAULT NULL,
-  `prefix` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
+  `prefix` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `project_stages`
@@ -5432,18 +5299,16 @@ INSERT INTO `project_stages` (`id`, `project_id`, `stage_id`, `position`, `prefi
 -- Table structure for table `project_stage_tasks`
 --
 
-DROP TABLE IF EXISTS `project_stage_tasks`;
-CREATE TABLE IF NOT EXISTS `project_stage_tasks` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `project_stage_tasks` (
+  `id` int(11) UNSIGNED NOT NULL,
   `project_stage_id` int(11) NOT NULL,
   `task_id` int(11) DEFAULT NULL,
   `duration` double DEFAULT NULL,
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
   `position` int(11) DEFAULT NULL,
-  `prefix` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
+  `prefix` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `project_stage_tasks`
@@ -5504,9 +5369,8 @@ INSERT INTO `project_stage_tasks` (`id`, `project_stage_id`, `task_id`, `duratio
 -- Table structure for table `project_stage_task_variablecosts`
 --
 
-DROP TABLE IF EXISTS `project_stage_task_variablecosts`;
-CREATE TABLE IF NOT EXISTS `project_stage_task_variablecosts` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `project_stage_task_variablecosts` (
+  `id` int(11) UNSIGNED NOT NULL,
   `project_stage_task_id` int(11) NOT NULL,
   `variablecost_id` int(11) NOT NULL,
   `unitprice` double NOT NULL,
@@ -5514,9 +5378,8 @@ CREATE TABLE IF NOT EXISTS `project_stage_task_variablecosts` (
   `pertonner` tinyint(1) NOT NULL,
   `notes` text NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `project_stage_task_variablecosts`
@@ -5604,9 +5467,8 @@ INSERT INTO `project_stage_task_variablecosts` (`id`, `project_stage_task_id`, `
 -- Table structure for table `project_variablecosts`
 --
 
-DROP TABLE IF EXISTS `project_variablecosts`;
-CREATE TABLE IF NOT EXISTS `project_variablecosts` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `project_variablecosts` (
+  `id` int(11) UNSIGNED NOT NULL,
   `project_id` int(11) NOT NULL,
   `variable_id` int(11) NOT NULL,
   `stage_id` int(11) NOT NULL,
@@ -5619,8 +5481,7 @@ CREATE TABLE IF NOT EXISTS `project_variablecosts` (
   `startdate` date DEFAULT NULL,
   `enddate` date DEFAULT NULL,
   `notes` text NOT NULL,
-  `duration` double NOT NULL,
-  PRIMARY KEY (`id`)
+  `duration` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -5629,13 +5490,11 @@ CREATE TABLE IF NOT EXISTS `project_variablecosts` (
 -- Table structure for table `provinces_list`
 --
 
-DROP TABLE IF EXISTS `provinces_list`;
-CREATE TABLE IF NOT EXISTS `provinces_list` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `provinces_list` (
+  `id` int(11) UNSIGNED NOT NULL,
   `country_id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4455 DEFAULT CHARSET=utf8;
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `provinces_list`
@@ -10105,9 +9964,8 @@ INSERT INTO `provinces_list` (`id`, `country_id`, `name`) VALUES
 -- Table structure for table `rawmaterial_offers`
 --
 
-DROP TABLE IF EXISTS `rawmaterial_offers`;
-CREATE TABLE IF NOT EXISTS `rawmaterial_offers` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `rawmaterial_offers` (
+  `id` int(11) UNSIGNED NOT NULL,
   `raw_material_id` int(11) NOT NULL,
   `brand_name` varchar(255) NOT NULL,
   `seller_id` int(11) NOT NULL,
@@ -10120,9 +9978,8 @@ CREATE TABLE IF NOT EXISTS `rawmaterial_offers` (
   `count` int(11) NOT NULL,
   `image_name` varchar(255) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `rawmaterial_offers`
@@ -10133,7 +9990,7 @@ INSERT INTO `rawmaterial_offers` (`id`, `raw_material_id`, `brand_name`, `seller
 (5, 1, 'ZimSuperSeeds ZM401 10kg', 2, 25, 'Very early maturing OPV (white maize)\r\nCan take 110 – 120 days to mature\r\nYield potential is 5 000kg/ha Tolerant to drought and low nitrogen\r\nThis variety has a good resistance to maize streak virus, Grey leaf spot(GLS), Cercosporazeae-maydis, PLS, and common rust(Puccinia sorghi', 50, 0, 'open', 'Ungraded', 0, '5ab3a9b4f9f7325ac50d2764acec30d8.jpg', 1495090256, 1518083713),
 (6, 1, 'Zimsuperseeds NUA45', 2, 36.5, 'Good yield up to 2900kg/ha\r\nMatures in 90 days\r\nSeed size is large and kidney shaped', 120, 120, 'open', 'Ungraded', 0, 'c28280e295f5856e1660aa95a0b10bed.jpg', 1495090409, 1495090409),
 (7, 13, 'Bonide', 2, 1.5, 'If you’re vegan, you might want to stay away from this one. Bone meal is a fine powder made up of ground animal bones. This additive is a nice way to get some additional phosphorous and calcium to your plants. An abundance of phosphorus is especially important once your plant has reached flowering phase. ', 1000, 998, 'open', 'Ungraded', 0, '3223247fee28db296c1712c8acaeae74.jpg', 1500467796, 1532676282),
-(8, 4, 'elephant', 80, 3, 'high quality ', 1000, 1000, 'open', 'Ungraded', 0, '7fe43be8ade32fbb2e86472a258abedf.JPG', 1518083678, 1518083678);
+(8, 4, 'elephant', 80, 3, 'high quality ', 1000, 999, 'open', 'Ungraded', 0, '7fe43be8ade32fbb2e86472a258abedf.JPG', 1518083678, 1582654298);
 
 -- --------------------------------------------------------
 
@@ -10141,16 +9998,14 @@ INSERT INTO `rawmaterial_offers` (`id`, `raw_material_id`, `brand_name`, `seller
 -- Table structure for table `raw_materials`
 --
 
-DROP TABLE IF EXISTS `raw_materials`;
-CREATE TABLE IF NOT EXISTS `raw_materials` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `raw_materials` (
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `measurement_id` int(11) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=351 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `raw_materials`
@@ -10237,15 +10092,13 @@ INSERT INTO `raw_materials` (`id`, `name`, `description`, `measurement_id`, `cre
 -- Table structure for table `regions`
 --
 
-DROP TABLE IF EXISTS `regions`;
-CREATE TABLE IF NOT EXISTS `regions` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `regions` (
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `regions`
@@ -10263,14 +10116,12 @@ INSERT INTO `regions` (`id`, `name`, `description`, `created_at`, `updated_at`) 
 -- Table structure for table `region_conditions`
 --
 
-DROP TABLE IF EXISTS `region_conditions`;
-CREATE TABLE IF NOT EXISTS `region_conditions` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `region_conditions` (
+  `id` int(11) UNSIGNED NOT NULL,
   `region_id` int(11) NOT NULL,
   `condition_id` int(11) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -10279,14 +10130,12 @@ CREATE TABLE IF NOT EXISTS `region_conditions` (
 -- Table structure for table `region_condition_products`
 --
 
-DROP TABLE IF EXISTS `region_condition_products`;
-CREATE TABLE IF NOT EXISTS `region_condition_products` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `region_condition_products` (
+  `id` int(11) UNSIGNED NOT NULL,
   `region_id_condition_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -10295,9 +10144,8 @@ CREATE TABLE IF NOT EXISTS `region_condition_products` (
 -- Table structure for table `registrations`
 --
 
-DROP TABLE IF EXISTS `registrations`;
-CREATE TABLE IF NOT EXISTS `registrations` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `registrations` (
+  `id` int(11) UNSIGNED NOT NULL,
   `user_id` int(11) NOT NULL,
   `amount` double NOT NULL,
   `narrative` text NOT NULL,
@@ -10308,9 +10156,8 @@ CREATE TABLE IF NOT EXISTS `registrations` (
   `paymentStatus` varchar(255) NOT NULL,
   `mobile` varchar(255) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `registrations`
@@ -10378,24 +10225,23 @@ INSERT INTO `registrations` (`id`, `user_id`, `amount`, `narrative`, `status`, `
 -- Table structure for table `rm_sales`
 --
 
-DROP TABLE IF EXISTS `rm_sales`;
-CREATE TABLE IF NOT EXISTS `rm_sales` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `rm_sales` (
+  `id` int(11) UNSIGNED NOT NULL,
   `rm_offer_id` int(11) NOT NULL,
   `buyer_id` int(11) NOT NULL,
   `price` double NOT NULL,
   `quantity` double NOT NULL,
   `total` double NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `rm_sales`
 --
 
 INSERT INTO `rm_sales` (`id`, `rm_offer_id`, `buyer_id`, `price`, `quantity`, `total`, `created_at`, `updated_at`) VALUES
+(0, 8, 2, 3, 1, 3, 1582654298, 1582654298),
 (1, 4, 47, 20, 2, 40, 1495089157, 1495089157),
 (2, 4, 2, 20, 10, 200, 1495089385, 1495089385),
 (3, 4, 47, 20, 25, 500, 1495089385, 1495089385),
@@ -10413,9 +10259,8 @@ INSERT INTO `rm_sales` (`id`, `rm_offer_id`, `buyer_id`, `price`, `quantity`, `t
 -- Table structure for table `rm_transactions`
 --
 
-DROP TABLE IF EXISTS `rm_transactions`;
-CREATE TABLE IF NOT EXISTS `rm_transactions` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `rm_transactions` (
+  `id` int(11) UNSIGNED NOT NULL,
   `rm_sale_id` int(11) NOT NULL,
   `amount` double NOT NULL,
   `narrative` text NOT NULL,
@@ -10426,15 +10271,15 @@ CREATE TABLE IF NOT EXISTS `rm_transactions` (
   `payment_status` varchar(255) NOT NULL,
   `mobile` varchar(255) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `rm_transactions`
 --
 
 INSERT INTO `rm_transactions` (`id`, `rm_sale_id`, `amount`, `narrative`, `status`, `browse_url`, `poll_url`, `paynow_ref`, `payment_status`, `mobile`, `created_at`, `updated_at`) VALUES
+(0, 0, 3, 'This is a payment of $3, for 1kgs of elephant sold by Promise MakufaThe mobile number the payment information will be sent to is 263717779296', 'Created', 'https://www.paynow.co.zw/Payment/ConfirmPayment/6764606/onlinepayments@ttcs.co.zw//263717779296', 'https://www.paynow.co.zw/Interface/CheckPayment/?guid=0c0de726-85f5-4654-b17e-18c86425c311', '6764606', 'status', '263717779296', 1582654300, 1582654302),
 (1, 1, 40, 'This is a payment of $40, for 2kgs of Hoffman Fertilizers sold by Alvin2 VafanaThe mobile number the payment information will be sent to is 263773433318', 'Ok', 'https://www.paynow.co.zw/Payment/ConfirmPayment/395070/onlinepayments@ttcs.co.zw/-/263773433318', 'https://www.paynow.co.zw/Interface/CheckPayment/?guid=14c93e75-fe63-4207-892a-e8d853175a0f', '000000', 'status', '263773433318', 1495089164, 1495089164),
 (2, 1, 40, 'This is a payment of $40, for 2kgs of Hoffman Fertilizers sold by Alvin2 VafanaThe mobile number the payment information will be sent to is 263773433318', 'Ok', 'https://www.paynow.co.zw/Payment/ConfirmPayment/395071/onlinepayments@ttcs.co.zw/-/263773433318', 'https://www.paynow.co.zw/Interface/CheckPayment/?guid=616ccf7c-1294-443d-9656-0bb07dd53744', '000000', 'status', '263773433318', 1495089173, 1495089174),
 (3, 1, 40, 'This is a payment of $40, for 2kgs of Hoffman Fertilizers sold by Alvin2 VafanaThe mobile number the payment information will be sent to is 263773433318', 'Ok', 'https://www.paynow.co.zw/Payment/ConfirmPayment/395072/onlinepayments@ttcs.co.zw/-/263773433318', 'https://www.paynow.co.zw/Interface/CheckPayment/?guid=ad33e39d-566b-4cca-bc70-b2a2be1d73e6', '000000', 'status', '263773433318', 1495089204, 1495089204),
@@ -10454,8 +10299,7 @@ INSERT INTO `rm_transactions` (`id`, `rm_sale_id`, `amount`, `narrative`, `statu
 -- Table structure for table `roles_structures`
 --
 
-DROP TABLE IF EXISTS `roles_structures`;
-CREATE TABLE IF NOT EXISTS `roles_structures` (
+CREATE TABLE `roles_structures` (
   `role_id` int(11) NOT NULL,
   `structure_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -10466,13 +10310,11 @@ CREATE TABLE IF NOT EXISTS `roles_structures` (
 -- Table structure for table `runningtables`
 --
 
-DROP TABLE IF EXISTS `runningtables`;
-CREATE TABLE IF NOT EXISTS `runningtables` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `runningtables` (
+  `id` int(11) UNSIGNED NOT NULL,
   `value` text NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -10481,23 +10323,22 @@ CREATE TABLE IF NOT EXISTS `runningtables` (
 -- Table structure for table `sales`
 --
 
-DROP TABLE IF EXISTS `sales`;
-CREATE TABLE IF NOT EXISTS `sales` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `sales` (
+  `id` int(11) UNSIGNED NOT NULL,
   `productoffer_id` int(11) NOT NULL,
   `bid_id` int(11) NOT NULL,
   `status` varchar(255) NOT NULL,
   `amount` double NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=160 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sales`
 --
 
 INSERT INTO `sales` (`id`, `productoffer_id`, `bid_id`, `status`, `amount`, `created_at`, `updated_at`) VALUES
+(0, 26, 54, 'open', 1000, 1582654148, 1582654148),
 (1, 1, 30, 'open', 4, 1449644401, 1449644401),
 (2, 3, 32, 'open', 5, 1449657098, 1449657098),
 (3, 3, 33, 'open', 5, 1449657151, 1449657151),
@@ -10664,9 +10505,8 @@ INSERT INTO `sales` (`id`, `productoffer_id`, `bid_id`, `status`, `amount`, `cre
 -- Table structure for table `sap_bps`
 --
 
-DROP TABLE IF EXISTS `sap_bps`;
-CREATE TABLE IF NOT EXISTS `sap_bps` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `sap_bps` (
+  `id` int(11) UNSIGNED NOT NULL,
   `bp_num` varchar(255) NOT NULL,
   `firstname` varchar(255) NOT NULL,
   `lastname` varchar(255) NOT NULL,
@@ -10675,9 +10515,8 @@ CREATE TABLE IF NOT EXISTS `sap_bps` (
   `city` varchar(255) NOT NULL,
   `region` varchar(255) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sap_bps`
@@ -10695,16 +10534,14 @@ INSERT INTO `sap_bps` (`id`, `bp_num`, `firstname`, `lastname`, `street`, `house
 -- Table structure for table `seasonfarmings`
 --
 
-DROP TABLE IF EXISTS `seasonfarmings`;
-CREATE TABLE IF NOT EXISTS `seasonfarmings` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `seasonfarmings` (
+  `id` int(11) UNSIGNED NOT NULL,
   `contract_id` int(11) NOT NULL,
   `expectedyield` varchar(255) NOT NULL,
   `actualyield` varchar(255) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `seasonfarmings`
@@ -10813,14 +10650,12 @@ INSERT INTO `seasonfarmings` (`id`, `contract_id`, `expectedyield`, `actualyield
 -- Table structure for table `seasons`
 --
 
-DROP TABLE IF EXISTS `seasons`;
-CREATE TABLE IF NOT EXISTS `seasons` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `seasons` (
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `seasons`
@@ -10836,9 +10671,8 @@ INSERT INTO `seasons` (`id`, `name`, `created_at`, `updated_at`) VALUES
 -- Table structure for table `sms`
 --
 
-DROP TABLE IF EXISTS `sms`;
-CREATE TABLE IF NOT EXISTS `sms` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `sms` (
+  `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `sender_id` int(11) NOT NULL,
   `recipients` text NOT NULL,
@@ -10846,9 +10680,8 @@ CREATE TABLE IF NOT EXISTS `sms` (
   `sending_number` varchar(255) NOT NULL,
   `message_id` varchar(255) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=140 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `sms`
@@ -10931,17 +10764,15 @@ INSERT INTO `sms` (`id`, `username`, `sender_id`, `recipients`, `body`, `sending
 -- Table structure for table `soapplications`
 --
 
-DROP TABLE IF EXISTS `soapplications`;
-CREATE TABLE IF NOT EXISTS `soapplications` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `soapplications` (
+  `id` int(11) UNSIGNED NOT NULL,
   `farmer` varchar(255) NOT NULL,
   `contractname` varchar(255) NOT NULL,
   `stoporderno` varchar(255) NOT NULL,
   `farmerid` varchar(255) NOT NULL,
   `contractno` varchar(255) NOT NULL,
   `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -10950,15 +10781,13 @@ CREATE TABLE IF NOT EXISTS `soapplications` (
 -- Table structure for table `soiltypes`
 --
 
-DROP TABLE IF EXISTS `soiltypes`;
-CREATE TABLE IF NOT EXISTS `soiltypes` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `soiltypes` (
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
-  `description` text,
+  `description` text DEFAULT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `soiltypes`
@@ -10978,14 +10807,12 @@ INSERT INTO `soiltypes` (`id`, `name`, `description`, `created_at`, `updated_at`
 -- Table structure for table `stages`
 --
 
-DROP TABLE IF EXISTS `stages`;
-CREATE TABLE IF NOT EXISTS `stages` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `stages` (
+  `id` int(11) UNSIGNED NOT NULL,
   `name` text NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `stages`
@@ -11012,9 +10839,8 @@ INSERT INTO `stages` (`id`, `name`, `created_at`, `updated_at`) VALUES
 -- Table structure for table `stakeholder_products`
 --
 
-DROP TABLE IF EXISTS `stakeholder_products`;
-CREATE TABLE IF NOT EXISTS `stakeholder_products` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `stakeholder_products` (
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `pic` varchar(255) NOT NULL,
@@ -11022,9 +10848,8 @@ CREATE TABLE IF NOT EXISTS `stakeholder_products` (
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
   `tradingname` varchar(250) NOT NULL,
-  `userid` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `userid` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `stakeholder_products`
@@ -11040,16 +10865,14 @@ INSERT INTO `stakeholder_products` (`id`, `name`, `description`, `pic`, `additio
 -- Table structure for table `stakeholder_tradingdetails`
 --
 
-DROP TABLE IF EXISTS `stakeholder_tradingdetails`;
-CREATE TABLE IF NOT EXISTS `stakeholder_tradingdetails` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `stakeholder_tradingdetails` (
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `additional_details` text NOT NULL,
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
-  `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `stakeholder_tradingdetails`
@@ -11064,9 +10887,8 @@ INSERT INTO `stakeholder_tradingdetails` (`id`, `name`, `additional_details`, `c
 -- Table structure for table `stopcodes`
 --
 
-DROP TABLE IF EXISTS `stopcodes`;
-CREATE TABLE IF NOT EXISTS `stopcodes` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `stopcodes` (
+  `id` int(11) UNSIGNED NOT NULL,
   `code` varchar(255) NOT NULL,
   `vendor` varchar(255) NOT NULL,
   `company_code` varchar(255) NOT NULL,
@@ -11075,9 +10897,8 @@ CREATE TABLE IF NOT EXISTS `stopcodes` (
   `commission` varchar(255) NOT NULL,
   `description` varchar(255) CHARACTER SET utf32 DEFAULT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `stopcodes`
@@ -11111,9 +10932,8 @@ INSERT INTO `stopcodes` (`id`, `code`, `vendor`, `company_code`, `vendor_name`, 
 -- Table structure for table `stoporders`
 --
 
-DROP TABLE IF EXISTS `stoporders`;
-CREATE TABLE IF NOT EXISTS `stoporders` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `stoporders` (
+  `id` int(11) UNSIGNED NOT NULL,
   `company_code` varchar(255) NOT NULL,
   `stop_order_number` varchar(255) NOT NULL,
   `code` varchar(255) NOT NULL,
@@ -11126,9 +10946,8 @@ CREATE TABLE IF NOT EXISTS `stoporders` (
   `so_text` text NOT NULL,
   `depot` varchar(255) NOT NULL,
   `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `stoporders`
@@ -11150,15 +10969,13 @@ INSERT INTO `stoporders` (`id`, `company_code`, `stop_order_number`, `code`, `fa
 -- Table structure for table `structures`
 --
 
-DROP TABLE IF EXISTS `structures`;
-CREATE TABLE IF NOT EXISTS `structures` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `structures` (
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `structures`
@@ -11174,8 +10991,7 @@ INSERT INTO `structures` (`id`, `name`, `description`, `created_at`, `updated_at
 -- Table structure for table `structures_groups`
 --
 
-DROP TABLE IF EXISTS `structures_groups`;
-CREATE TABLE IF NOT EXISTS `structures_groups` (
+CREATE TABLE `structures_groups` (
   `structure_id` int(11) NOT NULL,
   `group_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -11198,8 +11014,7 @@ INSERT INTO `structures_groups` (`structure_id`, `group_id`) VALUES
 -- Table structure for table `structures_structures`
 --
 
-DROP TABLE IF EXISTS `structures_structures`;
-CREATE TABLE IF NOT EXISTS `structures_structures` (
+CREATE TABLE `structures_structures` (
   `structure_id` int(11) NOT NULL,
   `view_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -11220,15 +11035,13 @@ INSERT INTO `structures_structures` (`structure_id`, `view_id`) VALUES
 -- Table structure for table `students`
 --
 
-DROP TABLE IF EXISTS `students`;
-CREATE TABLE IF NOT EXISTS `students` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `students` (
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `surname` varchar(255) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `students`
@@ -11243,22 +11056,21 @@ INSERT INTO `students` (`id`, `name`, `surname`, `created_at`, `updated_at`) VAL
 -- Table structure for table `subscriptions`
 --
 
-DROP TABLE IF EXISTS `subscriptions`;
-CREATE TABLE IF NOT EXISTS `subscriptions` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `subscriptions` (
+  `id` int(11) UNSIGNED NOT NULL,
   `type` varchar(255) NOT NULL,
   `subscribed` tinyint(1) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
-  `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=527 DEFAULT CHARSET=utf8;
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `subscriptions`
 --
 
 INSERT INTO `subscriptions` (`id`, `type`, `subscribed`, `created_at`, `updated_at`, `user_id`) VALUES
+(0, 'farmer', 1, 1582642745, NULL, 2),
 (1, 'farmer', 1, 1449238105, NULL, 1),
 (2, 'farmer', 1, 1449238161, NULL, 1),
 (3, 'buyer', 0, 1449238304, NULL, 1),
@@ -11436,7 +11248,6 @@ INSERT INTO `subscriptions` (`id`, `type`, `subscribed`, `created_at`, `updated_
 (460, 'farmer', 1, 1502876071, NULL, 38),
 (461, 'farmer', 1, 1502954887, NULL, 60),
 (466, 'contractor', 1, 1503318926, NULL, 32),
-(467, 'farmer', 1, 1503917047, NULL, 2),
 (468, 'farmer', 1, 1503924025, NULL, 66),
 (475, 'contractor', 1, 1504100935, NULL, 17),
 (476, 'contractor', 1, 1504512737, NULL, 24),
@@ -11496,14 +11307,12 @@ INSERT INTO `subscriptions` (`id`, `type`, `subscribed`, `created_at`, `updated_
 -- Table structure for table `symptoms`
 --
 
-DROP TABLE IF EXISTS `symptoms`;
-CREATE TABLE IF NOT EXISTS `symptoms` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `symptoms` (
+  `id` int(11) UNSIGNED NOT NULL,
   `description` varchar(255) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `symptoms`
@@ -11549,16 +11358,14 @@ INSERT INTO `symptoms` (`id`, `description`, `created_at`, `updated_at`) VALUES
 -- Table structure for table `targetyields`
 --
 
-DROP TABLE IF EXISTS `targetyields`;
-CREATE TABLE IF NOT EXISTS `targetyields` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `targetyields` (
+  `id` int(11) UNSIGNED NOT NULL,
   `value` double NOT NULL,
   `units` varchar(255) NOT NULL,
   `sizein` varchar(255) NOT NULL,
   `land` varchar(255) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -11567,15 +11374,13 @@ CREATE TABLE IF NOT EXISTS `targetyields` (
 -- Table structure for table `tasks`
 --
 
-DROP TABLE IF EXISTS `tasks`;
-CREATE TABLE IF NOT EXISTS `tasks` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tasks` (
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tasks`
@@ -11593,16 +11398,14 @@ INSERT INTO `tasks` (`id`, `name`, `description`, `created_at`, `updated_at`) VA
 -- Table structure for table `todos`
 --
 
-DROP TABLE IF EXISTS `todos`;
-CREATE TABLE IF NOT EXISTS `todos` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `todos` (
+  `id` int(11) UNSIGNED NOT NULL,
   `notes` text NOT NULL,
   `duration` double NOT NULL,
   `units` varchar(255) DEFAULT NULL,
   `Model_Product_Variablecost_Stage_id` int(11) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -11611,9 +11414,8 @@ CREATE TABLE IF NOT EXISTS `todos` (
 -- Table structure for table `transactions`
 --
 
-DROP TABLE IF EXISTS `transactions`;
-CREATE TABLE IF NOT EXISTS `transactions` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `transactions` (
+  `id` int(11) UNSIGNED NOT NULL,
   `sale_id` int(11) NOT NULL,
   `amount` double NOT NULL,
   `narrative` varchar(500) NOT NULL,
@@ -11624,9 +11426,8 @@ CREATE TABLE IF NOT EXISTS `transactions` (
   `paymentStatus` varchar(255) NOT NULL,
   `mobile` varchar(255) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=162 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `transactions`
@@ -11802,14 +11603,12 @@ INSERT INTO `transactions` (`id`, `sale_id`, `amount`, `narrative`, `status`, `b
 -- Table structure for table `units`
 --
 
-DROP TABLE IF EXISTS `units`;
-CREATE TABLE IF NOT EXISTS `units` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `units` (
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `units`
@@ -11827,17 +11626,15 @@ INSERT INTO `units` (`id`, `name`, `created_at`, `updated_at`) VALUES
 -- Table structure for table `userprofiles`
 --
 
-DROP TABLE IF EXISTS `userprofiles`;
-CREATE TABLE IF NOT EXISTS `userprofiles` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `userprofiles` (
+  `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
   `phone_mobile` varchar(255) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
-  `natid` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
+  `natid` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -11846,29 +11643,27 @@ CREATE TABLE IF NOT EXISTS `userprofiles` (
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `activated` tinyint(4) NOT NULL DEFAULT '0',
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `activated` tinyint(4) NOT NULL DEFAULT 0,
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `group_id` int(11) NOT NULL DEFAULT '1',
+  `group_id` int(11) NOT NULL DEFAULT 1,
   `email` varchar(255) NOT NULL,
   `last_login` varchar(25) NOT NULL,
   `previous_login` varchar(25) NOT NULL DEFAULT '0',
   `login_hash` varchar(255) NOT NULL,
-  `user_id` int(11) NOT NULL DEFAULT '0',
-  `created_at` int(11) NOT NULL DEFAULT '0',
-  `updated_at` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=253 DEFAULT CHARSET=utf8;
+  `user_id` int(11) NOT NULL DEFAULT 0,
+  `created_at` int(11) NOT NULL DEFAULT 0,
+  `updated_at` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `activated`, `username`, `password`, `group_id`, `email`, `last_login`, `previous_login`, `login_hash`, `user_id`, `created_at`, `updated_at`) VALUES
-(2, 1, '263717779296', 'HyeanX89H0/pEHl539v0rNTPm4+Gy4nU7bVXNuV985s=', 16, 'ssithole@ttcsglobal.com', '1545205996', '1545038848', '7a1ac2118fd002d1ae0c41d5286de5cc4c52f552', 2, 1449133749, 1545205996),
+(2, 1, '263717779296', 'HyeanX89H0/pEHl539v0rNTPm4+Gy4nU7bVXNuV985s=', 16, 'nchikwanda@ttcs.co.zw', '1582654778', '1582649180', '072546de3e36f16c6d09a1431dfe9049f0ba4419', 2, 1449133749, 1582654778),
 (5, 1, '263772465888', 'HyeanX89H0/pEHl539v0rNTPm4+Gy4nU7bVXNuV985s=', 1, 'tsitsi@gmail.com', '1545034378', '1544608522', 'd6a4f8ceca6ccfbb6cc5c0d655fd34cb170475c2', 5, 1451909170, 1545034378),
 (10, 1, '263777000000', 'HyeanX89H0/pEHl539v0rNTPm4+Gy4nU7bVXNuV985s=', 0, 'nyasha@gmail.com', '1458297085', '1457518696', '65696eb42582712dfc3f33db568d0e05765dc081', 10, 1455107194, 1458297085),
 (11, 1, '263777000777', 'HyeanX89H0/pEHl539v0rNTPm4+Gy4nU7bVXNuV985s=', 0, 'munya@gmail.com', '1475670019', '1473144814', '1fa42569de90c701df05863cea36f075111078c8', 11, 1455170882, 1475670019),
@@ -11956,7 +11751,10 @@ INSERT INTO `users` (`id`, `activated`, `username`, `password`, `group_id`, `ema
 (249, 0, '0771111111', 'HyeanX89H0/pEHl539v0rNTPm4+Gy4nU7bVXNuV985s=', 0, 'promjo@promjo.com', '0', '0', '', 2, 1543839302, 0),
 (250, 0, '0777777111', 'HyeanX89H0/pEHl539v0rNTPm4+Gy4nU7bVXNuV985s=', 0, 'tarsith@tarsith.com', '0', '0', '', 2, 1544433531, 0),
 (251, 0, '0716587644', 'HyeanX89H0/pEHl539v0rNTPm4+Gy4nU7bVXNuV985s=', 0, 'augostino@gmail.com', '0', '0', '', 2, 1544779358, 0),
-(252, 0, '0700000000', 'HyeanX89H0/pEHl539v0rNTPm4+Gy4nU7bVXNuV985s=', 0, 'bamuamon@gmb.co.zw', '0', '0', '', 2, 1544795835, 0);
+(252, 0, '0700000000', 'HyeanX89H0/pEHl539v0rNTPm4+Gy4nU7bVXNuV985s=', 0, 'bamuamon@gmb.co.zw', '0', '0', '', 2, 1544795835, 0),
+(253, 0, '0719387579', 'HyeanX89H0/pEHl539v0rNTPm4+Gy4nU7bVXNuV985s=', 0, 'kidkudzy@gmail4.com', '0', '0', '', 2, 1582483041, 0),
+(254, 0, '0719387571', 'HyeanX89H0/pEHl539v0rNTPm4+Gy4nU7bVXNuV985s=', 0, 'kidkudzy@gmail1.com', '0', '0', '', 2, 1582483253, 0),
+(255, 0, '0719387574', 'HyeanX89H0/pEHl539v0rNTPm4+Gy4nU7bVXNuV985s=', 0, 'kidkudzy@gmail3w.com', '0', '0', '', 2, 1582483804, 0);
 
 -- --------------------------------------------------------
 
@@ -11964,18 +11762,16 @@ INSERT INTO `users` (`id`, `activated`, `username`, `password`, `group_id`, `ema
 -- Table structure for table `usersold`
 --
 
-DROP TABLE IF EXISTS `usersold`;
-CREATE TABLE IF NOT EXISTS `usersold` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `usersold` (
+  `id` int(11) UNSIGNED NOT NULL,
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `address_id` int(11) NOT NULL,
   `active` tinyint(1) NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `usersold`
@@ -11991,15 +11787,13 @@ INSERT INTO `usersold` (`id`, `first_name`, `last_name`, `email`, `address_id`, 
 -- Table structure for table `users_groups`
 --
 
-DROP TABLE IF EXISTS `users_groups`;
-CREATE TABLE IF NOT EXISTS `users_groups` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users_groups` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `user_id` int(11) NOT NULL DEFAULT '0',
-  `created_at` int(11) NOT NULL DEFAULT '0',
-  `updated_at` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+  `user_id` int(11) NOT NULL DEFAULT 0,
+  `created_at` int(11) NOT NULL DEFAULT 0,
+  `updated_at` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users_groups`
@@ -12016,11 +11810,9 @@ INSERT INTO `users_groups` (`id`, `name`, `user_id`, `created_at`, `updated_at`)
 -- Table structure for table `users_group_roles`
 --
 
-DROP TABLE IF EXISTS `users_group_roles`;
-CREATE TABLE IF NOT EXISTS `users_group_roles` (
+CREATE TABLE `users_group_roles` (
   `group_id` int(11) NOT NULL,
-  `role_id` int(11) NOT NULL,
-  PRIMARY KEY (`group_id`,`role_id`)
+  `role_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -12036,26 +11828,24 @@ INSERT INTO `users_group_roles` (`group_id`, `role_id`) VALUES
 -- Table structure for table `users_metadata`
 --
 
-DROP TABLE IF EXISTS `users_metadata`;
-CREATE TABLE IF NOT EXISTS `users_metadata` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `parent_id` int(11) NOT NULL DEFAULT '0',
+CREATE TABLE `users_metadata` (
+  `id` int(11) NOT NULL,
+  `parent_id` int(11) NOT NULL DEFAULT 0,
   `key` varchar(20) NOT NULL,
   `value` varchar(100) NOT NULL,
-  `user_id` int(11) NOT NULL DEFAULT '0',
-  `created_at` int(11) NOT NULL DEFAULT '0',
-  `updated_at` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=562 DEFAULT CHARSET=utf8;
+  `user_id` int(11) NOT NULL DEFAULT 0,
+  `created_at` int(11) NOT NULL DEFAULT 0,
+  `updated_at` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users_metadata`
 --
 
 INSERT INTO `users_metadata` (`id`, `parent_id`, `key`, `value`, `user_id`, `created_at`, `updated_at`) VALUES
-(4, 2, 'first_name', 'Svodesai', 2, 1449133749, 1532503740),
-(5, 2, 'last_name', 'Sithole', 2, 1449133749, 1532503740),
-(6, 2, 'address_id', '', 2, 1449133750, 1534357687),
+(4, 2, 'first_name', 'Nyasha', 2, 1449133749, 1582654485),
+(5, 2, 'last_name', 'Chikwanda', 2, 1449133749, 1582654485),
+(6, 2, 'address_id', '', 2, 1449133750, 1582654485),
 (8, 2, 'enabled', '1', 0, 0, 0),
 (9, 3, 'first_name', 'Tariro', 2, 1449482259, 0),
 (10, 3, 'last_name', 'Sithole', 2, 1449482259, 0),
@@ -12064,7 +11854,7 @@ INSERT INTO `users_metadata` (`id`, `parent_id`, `key`, `value`, `user_id`, `cre
 (17, 5, 'first_name', 'Alvin', 0, 1451909170, 0),
 (18, 5, 'last_name', 'Vafana', 0, 1451909170, 0),
 (19, 5, 'address_id', '28', 0, 1451909170, 0),
-(20, 5, 'enabled', '1', 0, 1451909170, 0),
+(20, 5, 'enabled', '0', 2, 1451909170, 1582477665),
 (37, 10, 'first_name', 'Nyasha', 0, 1455107194, 0),
 (38, 10, 'last_name', 'Chikwanda', 0, 1455107194, 0),
 (39, 10, 'address_id', '40', 0, 1455107194, 0),
@@ -12569,7 +12359,19 @@ INSERT INTO `users_metadata` (`id`, `parent_id`, `key`, `value`, `user_id`, `cre
 (558, 252, 'first_name', 'AMON', 2, 1544795835, 0),
 (559, 252, 'last_name', 'BAMU', 2, 1544795835, 0),
 (560, 252, 'address_id', '519', 2, 1544795835, 0),
-(561, 252, 'enabled', '1', 2, 1544795835, 0);
+(561, 252, 'enabled', '1', 2, 1544795835, 0),
+(562, 253, 'first_name', 'Promise', 2, 1582483041, 0),
+(563, 253, 'last_name', 'Makufa', 2, 1582483041, 0),
+(564, 253, 'address_id', '520', 2, 1582483042, 0),
+(565, 253, 'enabled', '1', 2, 1582483042, 0),
+(566, 254, 'first_name', 'Promise', 2, 1582483253, 0),
+(567, 254, 'last_name', 'Makufa', 2, 1582483253, 0),
+(568, 254, 'address_id', '522', 2, 1582483253, 0),
+(569, 254, 'enabled', '1', 2, 1582483253, 0),
+(570, 255, 'first_name', 'Promise', 2, 1582483804, 0),
+(571, 255, 'last_name', 'Makufa', 2, 1582483804, 0),
+(572, 255, 'address_id', '524', 2, 1582483804, 0),
+(573, 255, 'enabled', '1', 2, 1582483804, 0);
 
 -- --------------------------------------------------------
 
@@ -12577,18 +12379,16 @@ INSERT INTO `users_metadata` (`id`, `parent_id`, `key`, `value`, `user_id`, `cre
 -- Table structure for table `users_permissions`
 --
 
-DROP TABLE IF EXISTS `users_permissions`;
-CREATE TABLE IF NOT EXISTS `users_permissions` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users_permissions` (
+  `id` int(11) NOT NULL,
   `area` varchar(25) NOT NULL,
   `permission` varchar(25) NOT NULL,
   `description` varchar(255) NOT NULL,
-  `actions` text,
-  `user_id` int(11) DEFAULT '0',
-  `created_at` int(11) NOT NULL DEFAULT '0',
-  `updated_at` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=utf8;
+  `actions` text DEFAULT NULL,
+  `user_id` int(11) DEFAULT 0,
+  `created_at` int(11) NOT NULL DEFAULT 0,
+  `updated_at` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users_permissions`
@@ -12684,21 +12484,18 @@ INSERT INTO `users_permissions` (`id`, `area`, `permission`, `description`, `act
 -- Table structure for table `users_providers`
 --
 
-DROP TABLE IF EXISTS `users_providers`;
-CREATE TABLE IF NOT EXISTS `users_providers` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `parent_id` int(11) NOT NULL DEFAULT '0',
+CREATE TABLE `users_providers` (
+  `id` int(11) NOT NULL,
+  `parent_id` int(11) NOT NULL DEFAULT 0,
   `provider` varchar(50) NOT NULL,
   `uid` varchar(255) NOT NULL,
   `secret` varchar(255) DEFAULT NULL,
   `access_token` varchar(255) DEFAULT NULL,
-  `expires` int(12) DEFAULT '0',
+  `expires` int(12) DEFAULT 0,
   `refresh_token` varchar(255) DEFAULT NULL,
-  `user_id` int(11) NOT NULL DEFAULT '0',
-  `created_at` int(11) NOT NULL DEFAULT '0',
-  `updated_at` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `parent_id` (`parent_id`)
+  `user_id` int(11) NOT NULL DEFAULT 0,
+  `created_at` int(11) NOT NULL DEFAULT 0,
+  `updated_at` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -12707,16 +12504,14 @@ CREATE TABLE IF NOT EXISTS `users_providers` (
 -- Table structure for table `users_roles`
 --
 
-DROP TABLE IF EXISTS `users_roles`;
-CREATE TABLE IF NOT EXISTS `users_roles` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users_roles` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `filter` enum('','A','D','R') NOT NULL DEFAULT '',
-  `user_id` int(11) NOT NULL DEFAULT '0',
-  `created_at` int(11) NOT NULL DEFAULT '0',
-  `updated_at` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+  `user_id` int(11) NOT NULL DEFAULT 0,
+  `created_at` int(11) NOT NULL DEFAULT 0,
+  `updated_at` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users_roles`
@@ -12740,14 +12535,12 @@ INSERT INTO `users_roles` (`id`, `name`, `filter`, `user_id`, `created_at`, `upd
 -- Table structure for table `users_role_permissions`
 --
 
-DROP TABLE IF EXISTS `users_role_permissions`;
-CREATE TABLE IF NOT EXISTS `users_role_permissions` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users_role_permissions` (
+  `id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
   `perms_id` int(11) NOT NULL,
-  `actions` text,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=217 DEFAULT CHARSET=utf8;
+  `actions` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users_role_permissions`
@@ -12796,7 +12589,6 @@ INSERT INTO `users_role_permissions` (`id`, `role_id`, `perms_id`, `actions`) VA
 (57, 6, 34, NULL),
 (58, 7, 34, NULL),
 (59, 8, 34, NULL),
-(60, 9, 34, NULL),
 (61, 10, 34, NULL),
 (62, 11, 34, NULL),
 (63, 12, 34, NULL),
@@ -12944,14 +12736,11 @@ INSERT INTO `users_role_permissions` (`id`, `role_id`, `perms_id`, `actions`) VA
 -- Table structure for table `users_scopes`
 --
 
-DROP TABLE IF EXISTS `users_scopes`;
-CREATE TABLE IF NOT EXISTS `users_scopes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users_scopes` (
+  `id` int(11) NOT NULL,
   `scope` varchar(64) NOT NULL DEFAULT '',
   `name` varchar(64) NOT NULL DEFAULT '',
-  `description` varchar(255) NOT NULL DEFAULT '',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `scope` (`scope`)
+  `description` varchar(255) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -12960,9 +12749,8 @@ CREATE TABLE IF NOT EXISTS `users_scopes` (
 -- Table structure for table `users_sessions`
 --
 
-DROP TABLE IF EXISTS `users_sessions`;
-CREATE TABLE IF NOT EXISTS `users_sessions` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users_sessions` (
+  `id` int(11) NOT NULL,
   `client_id` varchar(32) NOT NULL DEFAULT '',
   `redirect_uri` varchar(255) NOT NULL DEFAULT '',
   `type_id` varchar(64) NOT NULL,
@@ -12972,9 +12760,7 @@ CREATE TABLE IF NOT EXISTS `users_sessions` (
   `stage` enum('request','granted') NOT NULL DEFAULT 'request',
   `first_requested` int(11) NOT NULL,
   `last_updated` int(11) NOT NULL,
-  `limited_access` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `oauth_sessions_ibfk_1` (`client_id`)
+  `limited_access` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -12983,11 +12769,9 @@ CREATE TABLE IF NOT EXISTS `users_sessions` (
 -- Table structure for table `users_user_roles`
 --
 
-DROP TABLE IF EXISTS `users_user_roles`;
-CREATE TABLE IF NOT EXISTS `users_user_roles` (
+CREATE TABLE `users_user_roles` (
   `user_id` int(11) NOT NULL,
-  `role_id` int(11) NOT NULL,
-  PRIMARY KEY (`user_id`,`role_id`)
+  `role_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -13162,9 +12946,8 @@ INSERT INTO `users_user_roles` (`user_id`, `role_id`) VALUES
 -- Table structure for table `user_profiles`
 --
 
-DROP TABLE IF EXISTS `user_profiles`;
-CREATE TABLE IF NOT EXISTS `user_profiles` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user_profiles` (
+  `id` int(11) UNSIGNED NOT NULL,
   `user_id` varchar(255) DEFAULT NULL,
   `national_id` varchar(255) NOT NULL,
   `gender` varchar(255) NOT NULL,
@@ -13172,9 +12955,8 @@ CREATE TABLE IF NOT EXISTS `user_profiles` (
   `vendor_number` varchar(255) DEFAULT NULL,
   `payment_term` varchar(255) NOT NULL,
   `created_at` int(11) UNSIGNED DEFAULT NULL,
-  `updated_at` int(11) UNSIGNED DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=118 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user_profiles`
@@ -13192,7 +12974,8 @@ INSERT INTO `user_profiles` (`id`, `user_id`, `national_id`, `gender`, `date_of_
 (111, '246', '07-774618-a-27', 'Female', '1995-05-02', '0000500020', 'NT60', 1543389744, 1543389744),
 (115, '250', '22-111111-g-77', 'Female', '2018-12-01', '888888', 'N120', 1544433531, 1544433531),
 (116, '251', '07-774618-c-27', 'Male', '1978-06-14', '507360', 'NT00', 1544779358, 1544779358),
-(117, '252', '11-123456-d-55', 'Male', '2018-12-01', '506670', 'N120', 1544795835, 1544795835);
+(117, '252', '11-123456-d-55', 'Male', '2018-12-01', '506670', 'N120', 1544795835, 1544795835),
+(118, '255', '63-158354-a-50', 'Male', '1995-04-18', '0719387574', '0', 1582483804, 1582483804);
 
 -- --------------------------------------------------------
 
@@ -13200,16 +12983,14 @@ INSERT INTO `user_profiles` (`id`, `user_id`, `national_id`, `gender`, `date_of_
 -- Table structure for table `variablecosts`
 --
 
-DROP TABLE IF EXISTS `variablecosts`;
-CREATE TABLE IF NOT EXISTS `variablecosts` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `variablecosts` (
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `unit` varchar(255) DEFAULT NULL,
   `disbursed` int(11) DEFAULT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `updated_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `variablecosts`
@@ -13226,16 +13007,14 @@ INSERT INTO `variablecosts` (`id`, `name`, `unit`, `disbursed`, `created_at`, `u
 -- Table structure for table `vids`
 --
 
-DROP TABLE IF EXISTS `vids`;
-CREATE TABLE IF NOT EXISTS `vids` (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `vids` (
+  `id` int(11) UNSIGNED NOT NULL,
   `national_ID` varchar(255) NOT NULL,
   `Details` varchar(255) NOT NULL,
   `License_Type` varchar(255) NOT NULL,
   `amount` double NOT NULL,
   `created_at` int(11) DEFAULT NULL,
-  `updated_at` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -13244,8 +13023,7 @@ CREATE TABLE IF NOT EXISTS `vids` (
 -- Table structure for table `view_gettotalquantitybidded`
 --
 
-DROP TABLE IF EXISTS `view_gettotalquantitybidded`;
-CREATE TABLE IF NOT EXISTS `view_gettotalquantitybidded` (
+CREATE TABLE `view_gettotalquantitybidded` (
   `name` varchar(255) DEFAULT NULL,
   `bidmonth` int(2) DEFAULT NULL,
   `bidmonthname` varchar(9) DEFAULT NULL,
@@ -13258,11 +13036,1036 @@ CREATE TABLE IF NOT EXISTS `view_gettotalquantitybidded` (
 -- Table structure for table `view_productoffers`
 --
 
-DROP TABLE IF EXISTS `view_productoffers`;
-CREATE TABLE IF NOT EXISTS `view_productoffers` (
+CREATE TABLE `view_productoffers` (
   `name` varchar(255) DEFAULT NULL,
   `quantity_left` decimal(30,0) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `activities`
+--
+ALTER TABLE `activities`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `addresses`
+--
+ALTER TABLE `addresses`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `city_id` (`country_id`);
+
+--
+-- Indexes for table `bankdetails`
+--
+ALTER TABLE `bankdetails`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `basicformulas`
+--
+ALTER TABLE `basicformulas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `bids`
+--
+ALTER TABLE `bids`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `bids2`
+--
+ALTER TABLE `bids2`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `branches`
+--
+ALTER TABLE `branches`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `budgets`
+--
+ALTER TABLE `budgets`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `campaigns`
+--
+ALTER TABLE `campaigns`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `campaign_users`
+--
+ALTER TABLE `campaign_users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `children`
+--
+ALTER TABLE `children`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cities`
+--
+ALTER TABLE `cities`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cocodes`
+--
+ALTER TABLE `cocodes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `companies`
+--
+ALTER TABLE `companies`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `condtions`
+--
+ALTER TABLE `condtions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `contractapplications`
+--
+ALTER TABLE `contractapplications`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `contractortrackers`
+--
+ALTER TABLE `contractortrackers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `contractquantities`
+--
+ALTER TABLE `contractquantities`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `contracts`
+--
+ALTER TABLE `contracts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `contractstarts`
+--
+ALTER TABLE `contractstarts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `contracttrackers`
+--
+ALTER TABLE `contracttrackers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `contract_disburses`
+--
+ALTER TABLE `contract_disburses`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `conversions`
+--
+ALTER TABLE `conversions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `correctivemeasures`
+--
+ALTER TABLE `correctivemeasures`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `countries`
+--
+ALTER TABLE `countries`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `depots`
+--
+ALTER TABLE `depots`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `diseases`
+--
+ALTER TABLE `diseases`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `diseasesymptoms`
+--
+ALTER TABLE `diseasesymptoms`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `districts_list`
+--
+ALTER TABLE `districts_list`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `documents`
+--
+ALTER TABLE `documents`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `dropdowns`
+--
+ALTER TABLE `dropdowns`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `farmguides`
+--
+ALTER TABLE `farmguides`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `farms`
+--
+ALTER TABLE `farms`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `flags`
+--
+ALTER TABLE `flags`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `grades`
+--
+ALTER TABLE `grades`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `gradingcriterias`
+--
+ALTER TABLE `gradingcriterias`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `gradings`
+--
+ALTER TABLE `gradings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `grainreceipts`
+--
+ALTER TABLE `grainreceipts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `grainreceiptsdata`
+--
+ALTER TABLE `grainreceiptsdata`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `grains`
+--
+ALTER TABLE `grains`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `inputs`
+--
+ALTER TABLE `inputs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `labors`
+--
+ALTER TABLE `labors`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `linktables`
+--
+ALTER TABLE `linktables`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `loans`
+--
+ALTER TABLE `loans`
+  ADD PRIMARY KEY (`loanid`);
+
+--
+-- Indexes for table `logistics`
+--
+ALTER TABLE `logistics`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `mainmenus`
+--
+ALTER TABLE `mainmenus`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `mainmenus2`
+--
+ALTER TABLE `mainmenus2`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `markets`
+--
+ALTER TABLE `markets`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `market_places`
+--
+ALTER TABLE `market_places`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `masters`
+--
+ALTER TABLE `masters`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `materials`
+--
+ALTER TABLE `materials`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `measurements`
+--
+ALTER TABLE `measurements`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `parents`
+--
+ALTER TABLE `parents`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `paymentterms`
+--
+ALTER TABLE `paymentterms`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `permits`
+--
+ALTER TABLE `permits`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `productoffers`
+--
+ALTER TABLE `productoffers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `productoffers21`
+--
+ALTER TABLE `productoffers21`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `producttypes`
+--
+ALTER TABLE `producttypes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `product_variablecost_complexformulas`
+--
+ALTER TABLE `product_variablecost_complexformulas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `product_variablecost_stages`
+--
+ALTER TABLE `product_variablecost_stages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `product_variablecost_stage_targetyields`
+--
+ALTER TABLE `product_variablecost_stage_targetyields`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `profilepics`
+--
+ALTER TABLE `profilepics`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `projects`
+--
+ALTER TABLE `projects`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `project_conditions`
+--
+ALTER TABLE `project_conditions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `project_filtered_resources`
+--
+ALTER TABLE `project_filtered_resources`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `project_filtered_tasks`
+--
+ALTER TABLE `project_filtered_tasks`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `project_regions`
+--
+ALTER TABLE `project_regions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `project_soiltypes`
+--
+ALTER TABLE `project_soiltypes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `project_stages`
+--
+ALTER TABLE `project_stages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `project_stage_tasks`
+--
+ALTER TABLE `project_stage_tasks`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `project_stage_task_variablecosts`
+--
+ALTER TABLE `project_stage_task_variablecosts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `project_variablecosts`
+--
+ALTER TABLE `project_variablecosts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `provinces_list`
+--
+ALTER TABLE `provinces_list`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `rawmaterial_offers`
+--
+ALTER TABLE `rawmaterial_offers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `raw_materials`
+--
+ALTER TABLE `raw_materials`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `regions`
+--
+ALTER TABLE `regions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `region_conditions`
+--
+ALTER TABLE `region_conditions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `region_condition_products`
+--
+ALTER TABLE `region_condition_products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `registrations`
+--
+ALTER TABLE `registrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `rm_sales`
+--
+ALTER TABLE `rm_sales`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `rm_transactions`
+--
+ALTER TABLE `rm_transactions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `runningtables`
+--
+ALTER TABLE `runningtables`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sales`
+--
+ALTER TABLE `sales`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sap_bps`
+--
+ALTER TABLE `sap_bps`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `seasonfarmings`
+--
+ALTER TABLE `seasonfarmings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `seasons`
+--
+ALTER TABLE `seasons`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sms`
+--
+ALTER TABLE `sms`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `soapplications`
+--
+ALTER TABLE `soapplications`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `soiltypes`
+--
+ALTER TABLE `soiltypes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `stages`
+--
+ALTER TABLE `stages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `stakeholder_products`
+--
+ALTER TABLE `stakeholder_products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `stakeholder_tradingdetails`
+--
+ALTER TABLE `stakeholder_tradingdetails`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `stopcodes`
+--
+ALTER TABLE `stopcodes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `stoporders`
+--
+ALTER TABLE `stoporders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `structures`
+--
+ALTER TABLE `structures`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `students`
+--
+ALTER TABLE `students`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `subscriptions`
+--
+ALTER TABLE `subscriptions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `symptoms`
+--
+ALTER TABLE `symptoms`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `targetyields`
+--
+ALTER TABLE `targetyields`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tasks`
+--
+ALTER TABLE `tasks`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `todos`
+--
+ALTER TABLE `todos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `transactions`
+--
+ALTER TABLE `transactions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `units`
+--
+ALTER TABLE `units`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `userprofiles`
+--
+ALTER TABLE `userprofiles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `usersold`
+--
+ALTER TABLE `usersold`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users_groups`
+--
+ALTER TABLE `users_groups`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users_group_roles`
+--
+ALTER TABLE `users_group_roles`
+  ADD PRIMARY KEY (`group_id`,`role_id`);
+
+--
+-- Indexes for table `users_metadata`
+--
+ALTER TABLE `users_metadata`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users_permissions`
+--
+ALTER TABLE `users_permissions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users_providers`
+--
+ALTER TABLE `users_providers`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `parent_id` (`parent_id`);
+
+--
+-- Indexes for table `users_roles`
+--
+ALTER TABLE `users_roles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users_role_permissions`
+--
+ALTER TABLE `users_role_permissions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users_scopes`
+--
+ALTER TABLE `users_scopes`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `scope` (`scope`);
+
+--
+-- Indexes for table `users_sessions`
+--
+ALTER TABLE `users_sessions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `oauth_sessions_ibfk_1` (`client_id`);
+
+--
+-- Indexes for table `users_user_roles`
+--
+ALTER TABLE `users_user_roles`
+  ADD PRIMARY KEY (`user_id`,`role_id`);
+
+--
+-- Indexes for table `user_profiles`
+--
+ALTER TABLE `user_profiles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `variablecosts`
+--
+ALTER TABLE `variablecosts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `vids`
+--
+ALTER TABLE `vids`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `activities`
+--
+ALTER TABLE `activities`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `addresses`
+--
+ALTER TABLE `addresses`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=525;
+
+--
+-- AUTO_INCREMENT for table `bankdetails`
+--
+ALTER TABLE `bankdetails`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+
+--
+-- AUTO_INCREMENT for table `basicformulas`
+--
+ALTER TABLE `basicformulas`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `bids`
+--
+ALTER TABLE `bids`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+
+--
+-- AUTO_INCREMENT for table `bids2`
+--
+ALTER TABLE `bids2`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
+
+--
+-- AUTO_INCREMENT for table `branches`
+--
+ALTER TABLE `branches`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=472;
+
+--
+-- AUTO_INCREMENT for table `budgets`
+--
+ALTER TABLE `budgets`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `campaigns`
+--
+ALTER TABLE `campaigns`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `campaign_users`
+--
+ALTER TABLE `campaign_users`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `children`
+--
+ALTER TABLE `children`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `cities`
+--
+ALTER TABLE `cities`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `cocodes`
+--
+ALTER TABLE `cocodes`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `companies`
+--
+ALTER TABLE `companies`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `condtions`
+--
+ALTER TABLE `condtions`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `contractapplications`
+--
+ALTER TABLE `contractapplications`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT for table `contractortrackers`
+--
+ALTER TABLE `contractortrackers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `contractquantities`
+--
+ALTER TABLE `contractquantities`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=291;
+
+--
+-- AUTO_INCREMENT for table `contracts`
+--
+ALTER TABLE `contracts`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+
+--
+-- AUTO_INCREMENT for table `contractstarts`
+--
+ALTER TABLE `contractstarts`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT for table `contracttrackers`
+--
+ALTER TABLE `contracttrackers`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `contract_disburses`
+--
+ALTER TABLE `contract_disburses`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
+
+--
+-- AUTO_INCREMENT for table `conversions`
+--
+ALTER TABLE `conversions`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `correctivemeasures`
+--
+ALTER TABLE `correctivemeasures`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `countries`
+--
+ALTER TABLE `countries`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=253;
+
+--
+-- AUTO_INCREMENT for table `depots`
+--
+ALTER TABLE `depots`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+
+--
+-- AUTO_INCREMENT for table `diseases`
+--
+ALTER TABLE `diseases`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `diseasesymptoms`
+--
+ALTER TABLE `diseasesymptoms`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+
+--
+-- AUTO_INCREMENT for table `districts_list`
+--
+ALTER TABLE `districts_list`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=406;
+
+--
+-- AUTO_INCREMENT for table `documents`
+--
+ALTER TABLE `documents`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT for table `dropdowns`
+--
+ALTER TABLE `dropdowns`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+
+--
+-- AUTO_INCREMENT for table `farmguides`
+--
+ALTER TABLE `farmguides`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `farms`
+--
+ALTER TABLE `farms`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `flags`
+--
+ALTER TABLE `flags`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=424;
+
+--
+-- AUTO_INCREMENT for table `grades`
+--
+ALTER TABLE `grades`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `gradingcriterias`
+--
+ALTER TABLE `gradingcriterias`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `gradings`
+--
+ALTER TABLE `gradings`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `grainreceipts`
+--
+ALTER TABLE `grainreceipts`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `grainreceiptsdata`
+--
+ALTER TABLE `grainreceiptsdata`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `grains`
+--
+ALTER TABLE `grains`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `inputs`
+--
+ALTER TABLE `inputs`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `labors`
+--
+ALTER TABLE `labors`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `linktables`
+--
+ALTER TABLE `linktables`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `loans`
+--
+ALTER TABLE `loans`
+  MODIFY `loanid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7013;
+
+--
+-- AUTO_INCREMENT for table `logistics`
+--
+ALTER TABLE `logistics`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `mainmenus`
+--
+ALTER TABLE `mainmenus`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `mainmenus2`
+--
+ALTER TABLE `mainmenus2`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `markets`
+--
+ALTER TABLE `markets`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `market_places`
+--
+ALTER TABLE `market_places`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

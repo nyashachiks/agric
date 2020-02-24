@@ -4,7 +4,7 @@
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
               <a href="<?php echo Uri::create('dashboard'); ?>" class="site_title">
-              <i class="fa fa-paw"></i> <span>W.E Prototype</span></a>
+              <i class="fa fa-paw"></i> <span>We Effect Agric</span></a>
             </div>
 
             <div class="clearfix"></div>

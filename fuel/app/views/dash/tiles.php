@@ -7,7 +7,7 @@
                 <div class="tile-stats">
                  <div class="icon"><i class="fa fa-map-marker"></i></div>
                   <div class="count"><?php echo $kpi->countMarketPlaces(); ?></div>
-                  <h3>Depots</h3>
+                  <h3>Market Places </h3>
                   <p>Dotted across Zimbabwe.</p>
                 </div>
               </a>

@@ -25,8 +25,11 @@ foreach($allprod as $item) {
  	//Debug::dump($arr);die;
  ?>
  <?php echo render('dash/tiles'); ?>
+
+
  
  <?php if(Model_User::is_ADMIN()): ?>
+ 
  <div class="row">
  		 <?php echo render('dash/tiles_second'); ?>
  		 
@@ -38,18 +41,33 @@ foreach($allprod as $item) {
 	 </div>
 	<?php endif; ?>
  <?php endif; ?>
- 
+ <?php //Debug::dump($there_is_internet);die; ?>
  <!-- subs widget -->
-	 <div class="row">
+ <div class="row">
 		
 		 
 		 <?php if($there_is_internet == true): ?>
 		 	<?php echo render('dash/weather'); ?>
 		 <?php else: ?>
 		 	<?php echo render('dash/weather_no_internet'); ?>
-			
 		 <?php endif; ?>
-		</div>
+    
+ 	<?php echo render('dash/graph'); ?>
+   
+
+     <?php echo render('dash/subs'); ?>
+     
+     
+		 
+		 
+		
+	 </div>
+   <div class="row">
+ 	<?php echo render('dash/top_sellers'); ?>
+ </div>
+ <!-- // subs widget -->
+
+   
 		
 		 
 		
