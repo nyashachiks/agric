@@ -1,0 +1,1 @@
+<?php echo render('productoffer/_form', array('form_label' => 'Create a product offer', 'btn_label' => 'Create')); ?>

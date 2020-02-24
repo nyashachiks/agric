@@ -1,0 +1,1 @@
+<?php echo render('disease/_form', array('form_label' => 'Create disease','btn_label' => 'Create')); ?>

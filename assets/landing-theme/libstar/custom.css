@@ -1,0 +1,76 @@
+/* embed open sans fonts */
+@font-face {
+    font-family: 'Open Sans';
+    src: url('./fonts/open-sans/OpenSans-Regular.ttf');
+}
+@font-face {
+    font-family: 'Open Sans Light';
+    src: url(./fonts/open-sans/OpenSans-Light.ttf);
+}
+
+
+/* style tweaker */
+
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
+/* call to action buttons */
+.btn-cta {
+	padding: 15px 40px;
+    border-radius: 40px;
+    font-family: 'Open Sans Light';
+}
+
+.libs-page-title {
+	font-family: "Open Sans";
+	font-size: 60px;
+	color: #fff;
+	margin-bottom: 50px;
+}
+
+.landing-h1 {
+	color: #fff;
+	margin-bottom: 30px;
+	text-transform: uppercase;
+	color: #fff;
+}
+
+.landing-text-center {
+	text-align: center;
+}
+
+.landing-wrapper {
+	background: black; 
+	opacity: 0.9;
+}
+
+.landing-wrapper > .row {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+body {
+	overflow-x: hidden;
+}
+
+/* ----------- laptops ----------- */
+@media screen 
+  and (min-device-width: 1200px) 
+{ 
+  
+.navbar-fixed-top {
+	opacity: 0.5;
+}
+
+.mbr-section {
+	padding-top: 90px;
+}
+
+.landing-form-wrapper {
+	    margin-top: 40px;
+}
+  
+  
+}
+
