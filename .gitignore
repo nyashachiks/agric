@@ -16,7 +16,7 @@
 
 # dynamically generated files
 
-/fuel/app/config/crypt.php
+# /fuel/app/config/crypt.php
 
 
 # exclude everything
