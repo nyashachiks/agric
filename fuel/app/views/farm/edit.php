@@ -1,0 +1,1 @@
+<?php echo render('farm/_form', array('form_label' => 'Edit farm', 'btn_label' => 'Save')); ?>

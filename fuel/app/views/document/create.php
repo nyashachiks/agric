@@ -1,0 +1,1 @@
+<?php echo render('document/_form', array('form_label' => 'Upload new document', 'btn_label' =>  'Upload')); ?>

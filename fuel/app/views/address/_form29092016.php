@@ -1,0 +1,46 @@
+	<?php echo Asset::js('country.js'); ?>
+		<div class="row">
+			<div class="col-md-3">	
+				<?php echo Form::label('Address:', 'address', array('class'=>'control-label')); ?>
+			</div>
+			<div class="col-md-9">	
+					<?php echo Form::textarea('address', Input::post('address', isset($address) ? $address->address : ''),
+					 array('class' => ' form-control btn-block', 'rows' =>3, 'placeholder'=>'House Number and Street name')); ?>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-3">	
+				<?php echo Form::label('Tel:', 'phone', array('class'=>'control-label')); ?>
+			</div>
+			<div class="col-md-9">
+				<?php echo Form::input('phone', Input::post('phone', isset($address) ? $address->phone : ''), array('class' =>' form-control btn-block','placeholder'=>'Phone')); ?>
+			</div>
+		</div>
+		
+		<?php 
+			echo (isset($country)?render('country/_form' ,array('country'=>$country)): render('country/_form'));
+		?>
+		
+		<div class="row">
+			<div class="col-md-3">	
+				<?php echo Form::label('City or District:', 'district', array('class'=>'control-label')); ?>
+			</div>
+			<div class="col-md-9">
+				<?php echo Form::select('district', Input::post('district', isset($address) ? $address->district : ''), array(
+					"Select District"), array('class' => ' form-control btn-block', 'id'=>'district')); ?>
+				<?php echo Form::input('district2', Input::post('district2', isset($address) ? $address->district : ''), array('class' =>
+					' form-control btn-block', 'placeholder'=>'District', 'style'=>'display:none', 'id'=>'district_2')); ?>
+			</div>
+		</div>
+			<script language="javascript">
+				populateCountries("country", "state","district");
+				<?php if(isset($address)):?>
+				$('#country option[value="<?php echo $address->country->country_name;?>"]').prop("selected", true);
+				populateStates("country", "state","district");
+				$('#state option[value="<?php echo $address->province;?>"]').prop("selected", true);
+				populateDistricts("country", "state","district");
+				$('#district option[value="<?php echo $address->district;?>"]').prop("selected", true);	
+				<?php endif;?>
+			</script>
+	

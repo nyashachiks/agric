@@ -1,0 +1,1 @@
+<?php echo render('contractapplication/_form', array('form_label'=>'Edit contract application', 'btn_label' => 'Save')); ?>

@@ -1,0 +1,366 @@
+
+**** Trace file opened at 2018-10-18, 11:44:28 GMT
+RFC Library Release: 721 Patch Level 48, Compiled on Apr 14 2018 04:51:23
+ CPIC library: 721.2018.02.03 version 3, NI library: 40, Kernel Release: 721 Patch Level 0
+ Current working directory: /var/www/html/sfgmb, Program: apache2
+ Hardware: AMD/Intel x86_64 with Linux x86_64, Operating_system: Linux 4.4.0-87-generic
+ Hostname: ubuntu, IP address: 127.0.1.1, IPv6 address: 127.0.1.1
+
+Stop Order WEBTEST3 has been Changed
+
+**** Trace file opened at 2018-10-18, 14:43:53 GMT
+RFC Library Release: 721 Patch Level 48, Compiled on Apr 14 2018 04:51:23
+ CPIC library: 721.2018.02.03 version 3, NI library: 40, Kernel Release: 721 Patch Level 0
+ Current working directory: /var/www/html/sfgmb, Program: apache2
+ Hardware: AMD/Intel x86_64 with Linux x86_64, Operating_system: Linux 4.4.0-87-generic
+ Hostname: ubuntu, IP address: 127.0.1.1, IPv6 address: 127.0.1.1
+
+Stop Order S0000026 has been Changed
+
+**** Trace file opened at 2018-10-18, 14:52:57 GMT
+RFC Library Release: 721 Patch Level 48, Compiled on Apr 14 2018 04:51:23
+ CPIC library: 721.2018.02.03 version 3, NI library: 40, Kernel Release: 721 Patch Level 0
+ Current working directory: /var/www/html/sfgmb, Program: apache2
+ Hardware: AMD/Intel x86_64 with Linux x86_64, Operating_system: Linux 4.4.0-87-generic
+ Hostname: ubuntu, IP address: 127.0.1.1, IPv6 address: 127.0.1.1
+
+Stop Order S0000026 has been Changed
+
+**** Trace file opened at 2018-10-18, 14:54:12 GMT
+RFC Library Release: 721 Patch Level 48, Compiled on Apr 14 2018 04:51:23
+ CPIC library: 721.2018.02.03 version 3, NI library: 40, Kernel Release: 721 Patch Level 0
+ Current working directory: /var/www/html/sfgmb, Program: apache2
+ Hardware: AMD/Intel x86_64 with Linux x86_64, Operating_system: Linux 4.4.0-87-generic
+ Hostname: ubuntu, IP address: 127.0.1.1, IPv6 address: 127.0.1.1
+
+Stop Order S0000026 has been Changed
+
+**** Trace file opened at 2018-10-19, 12:18:39 GMT
+RFC Library Release: 721 Patch Level 48, Compiled on Apr 14 2018 04:51:23
+ CPIC library: 721.2018.02.03 version 3, NI library: 40, Kernel Release: 721 Patch Level 0
+ Current working directory: /var/www/html/sfgmb1, Program: apache2
+ Hardware: AMD/Intel x86_64 with Linux x86_64, Operating_system: Linux 4.4.0-87-generic
+ Hostname: ubuntu, IP address: 127.0.1.1, IPv6 address: 127.0.1.1
+
+Function module "ZVENDOR_INSERT2" cannot be used for 'remote' calls.
+
+**** Trace file opened at 2018-10-19, 12:23:27 GMT
+RFC Library Release: 721 Patch Level 48, Compiled on Apr 14 2018 04:51:23
+ CPIC library: 721.2018.02.03 version 3, NI library: 40, Kernel Release: 721 Patch Level 0
+ Current working directory: /var/www/html/sfgmb1, Program: apache2
+ Hardware: AMD/Intel x86_64 with Linux x86_64, Operating_system: Linux 4.4.0-87-generic
+ Hostname: ubuntu, IP address: 127.0.1.1, IPv6 address: 127.0.1.1
+
+Function module "ZVENDOR_INSERT2" cannot be used for 'remote' calls.
+
+**** Trace file opened at 2018-10-22, 12:01:49 GMT
+RFC Library Release: 721 Patch Level 48, Compiled on Apr 14 2018 04:51:23
+ CPIC library: 721.2018.02.03 version 3, NI library: 40, Kernel Release: 721 Patch Level 0
+ Current working directory: /var/www/html/sfgmb, Program: apache2
+ Hardware: AMD/Intel x86_64 with Linux x86_64, Operating_system: Linux 4.4.0-87-generic
+ Hostname: ubuntu, IP address: 127.0.1.1, IPv6 address: 127.0.1.1
+
+Function module "ZVENDOR_INSERT2" cannot be used for 'remote' calls.
+
+**** Trace file opened at 2018-10-22, 12:08:53 GMT
+RFC Library Release: 721 Patch Level 48, Compiled on Apr 14 2018 04:51:23
+ CPIC library: 721.2018.02.03 version 3, NI library: 40, Kernel Release: 721 Patch Level 0
+ Current working directory: /var/www/html/sfgmb, Program: apache2
+ Hardware: AMD/Intel x86_64 with Linux x86_64, Operating_system: Linux 4.4.0-87-generic
+ Hostname: ubuntu, IP address: 127.0.1.1, IPv6 address: 127.0.1.1
+
+Stop Order 122 could not be Created. An Error has occured
+
+**** Trace file opened at 2018-10-22, 12:09:30 GMT
+RFC Library Release: 721 Patch Level 48, Compiled on Apr 14 2018 04:51:23
+ CPIC library: 721.2018.02.03 version 3, NI library: 40, Kernel Release: 721 Patch Level 0
+ Current working directory: /var/www/html/sfgmb, Program: apache2
+ Hardware: AMD/Intel x86_64 with Linux x86_64, Operating_system: Linux 4.4.0-87-generic
+ Hostname: ubuntu, IP address: 127.0.1.1, IPv6 address: 127.0.1.1
+
+Stop Order 122 could not be Created. An Error has occured
+
+**** Trace file opened at 2018-10-22, 12:10:08 GMT
+RFC Library Release: 721 Patch Level 48, Compiled on Apr 14 2018 04:51:23
+ CPIC library: 721.2018.02.03 version 3, NI library: 40, Kernel Release: 721 Patch Level 0
+ Current working directory: /var/www/html/sfgmb, Program: apache2
+ Hardware: AMD/Intel x86_64 with Linux x86_64, Operating_system: Linux 4.4.0-87-generic
+ Hostname: ubuntu, IP address: 127.0.1.1, IPv6 address: 127.0.1.1
+
+Stop Order 122 could not be Created. An Error has occured
+
+**** Trace file opened at 2018-10-22, 14:44:05 GMT
+RFC Library Release: 721 Patch Level 48, Compiled on Apr 14 2018 04:51:23
+ CPIC library: 721.2018.02.03 version 3, NI library: 40, Kernel Release: 721 Patch Level 0
+ Current working directory: /var/www/html/sfgmb, Program: apache2
+ Hardware: AMD/Intel x86_64 with Linux x86_64, Operating_system: Linux 4.4.0-87-generic
+ Hostname: ubuntu, IP address: 127.0.1.1, IPv6 address: 127.0.1.1
+
+Function module "ZVENDOR_INSERT2" cannot be used for 'remote' calls.
+
+**** Trace file opened at 2018-10-22, 15:23:19 GMT
+RFC Library Release: 721 Patch Level 48, Compiled on Apr 14 2018 04:51:23
+ CPIC library: 721.2018.02.03 version 3, NI library: 40, Kernel Release: 721 Patch Level 0
+ Current working directory: /var/www/html/sfgmb, Program: apache2
+ Hardware: AMD/Intel x86_64 with Linux x86_64, Operating_system: Linux 4.4.0-87-generic
+ Hostname: ubuntu, IP address: 127.0.1.1, IPv6 address: 127.0.1.1
+
+Function module "ZVENDOR_INSERT2" cannot be used for 'remote' calls.
+
+**** Trace file opened at 2018-10-23, 15:03:04 GMT
+RFC Library Release: 721 Patch Level 48, Compiled on Apr 14 2018 04:51:23
+ CPIC library: 721.2018.02.03 version 3, NI library: 40, Kernel Release: 721 Patch Level 0
+ Current working directory: /var/www/html/sfgmb, Program: apache2
+ Hardware: AMD/Intel x86_64 with Linux x86_64, Operating_system: Linux 4.4.0-87-generic
+ Hostname: ubuntu, IP address: 127.0.1.1, IPv6 address: 127.0.1.1
+
+Function module "ZVENDOR_INSERT2" cannot be used for 'remote' calls.
+
+**** Trace file opened at 2018-10-24, 12:10:24 GMT
+RFC Library Release: 721 Patch Level 48, Compiled on Apr 14 2018 04:51:23
+ CPIC library: 721.2018.02.03 version 3, NI library: 40, Kernel Release: 721 Patch Level 0
+ Current working directory: /var/www/html/sfgmb, Program: apache2
+ Hardware: AMD/Intel x86_64 with Linux x86_64, Operating_system: Linux 4.4.0-87-generic
+ Hostname: ubuntu, IP address: 127.0.1.1, IPv6 address: 127.0.1.1
+
+Stop Order 12 could not be Created. An Error has occured
+
+**** Trace file opened at 2018-10-24, 12:10:34 GMT
+RFC Library Release: 721 Patch Level 48, Compiled on Apr 14 2018 04:51:23
+ CPIC library: 721.2018.02.03 version 3, NI library: 40, Kernel Release: 721 Patch Level 0
+ Current working directory: /var/www/html/sfgmb, Program: apache2
+ Hardware: AMD/Intel x86_64 with Linux x86_64, Operating_system: Linux 4.4.0-87-generic
+ Hostname: ubuntu, IP address: 127.0.1.1, IPv6 address: 127.0.1.1
+
+Stop Order 12 could not be Created. An Error has occured
+
+**** Trace file opened at 2018-10-24, 12:34:07 GMT
+RFC Library Release: 721 Patch Level 48, Compiled on Apr 14 2018 04:51:23
+ CPIC library: 721.2018.02.03 version 3, NI library: 40, Kernel Release: 721 Patch Level 0
+ Current working directory: /var/www/html/sfgmb, Program: apache2
+ Hardware: AMD/Intel x86_64 with Linux x86_64, Operating_system: Linux 4.4.0-87-generic
+ Hostname: ubuntu, IP address: 127.0.1.1, IPv6 address: 127.0.1.1
+
+Stop Order 12 could not be Created. An Error has occured
+
+**** Trace file opened at 2018-10-24, 12:38:39 GMT
+RFC Library Release: 721 Patch Level 48, Compiled on Apr 14 2018 04:51:23
+ CPIC library: 721.2018.02.03 version 3, NI library: 40, Kernel Release: 721 Patch Level 0
+ Current working directory: /var/www/html/sfgmb, Program: apache2
+ Hardware: AMD/Intel x86_64 with Linux x86_64, Operating_system: Linux 4.4.0-87-generic
+ Hostname: ubuntu, IP address: 127.0.1.1, IPv6 address: 127.0.1.1
+
+Stop Order mm could not be Created. An Error has occured
+
+**** Trace file opened at 2018-10-24, 12:50:14 GMT
+RFC Library Release: 721 Patch Level 48, Compiled on Apr 14 2018 04:51:23
+ CPIC library: 721.2018.02.03 version 3, NI library: 40, Kernel Release: 721 Patch Level 0
+ Current working directory: /var/www/html/sfgmb, Program: apache2
+ Hardware: AMD/Intel x86_64 with Linux x86_64, Operating_system: Linux 4.4.0-87-generic
+ Hostname: ubuntu, IP address: 127.0.1.1, IPv6 address: 127.0.1.1
+
+Stop Order MM could not be Created. An Error has occured
+
+**** Trace file opened at 2018-10-29, 11:33:51 GMT
+RFC Library Release: 721 Patch Level 48, Compiled on Apr 14 2018 04:51:23
+ CPIC library: 721.2018.02.03 version 3, NI library: 40, Kernel Release: 721 Patch Level 0
+ Current working directory: /var/www/html/sfgmb, Program: apache2
+ Hardware: AMD/Intel x86_64 with Linux x86_64, Operating_system: Linux 4.4.0-87-generic
+ Hostname: ubuntu, IP address: 127.0.1.1, IPv6 address: 127.0.1.1
+
+Error during connect: 
+LOCATION    CPIC (TCP/IP) on local host with Unicode
+ERROR       partner '10.10.252.16:3330' not reached
+TIME        Mon Oct 29 11:33:51 2018
+RELEASE     721
+COMPONENT   NI (network interface)
+VERSION     40
+RC          -10
+MODULE      nibuf.cpp
+LINE        4658
+DETAIL      NiBufIConnect: connection pending after 60000ms
+SYSTEM CALL connect
+ERRNO       115
+ERRNO TEXT  Operation now in progress
+COUNTER     4
+
+
+
+**** Trace file opened at 2018-10-29, 11:37:35 GMT
+RFC Library Release: 721 Patch Level 48, Compiled on Apr 14 2018 04:51:23
+ CPIC library: 721.2018.02.03 version 3, NI library: 40, Kernel Release: 721 Patch Level 0
+ Current working directory: /var/www/html/sfgmb, Program: apache2
+ Hardware: AMD/Intel x86_64 with Linux x86_64, Operating_system: Linux 4.4.0-87-generic
+ Hostname: ubuntu, IP address: 127.0.1.1, IPv6 address: 127.0.1.1
+
+Error during connect: 
+LOCATION    CPIC (TCP/IP) on local host with Unicode
+ERROR       partner '10.10.252.16:3330' not reached
+TIME        Mon Oct 29 11:37:35 2018
+RELEASE     721
+COMPONENT   NI (network interface)
+VERSION     40
+RC          -10
+MODULE      nibuf.cpp
+LINE        4658
+DETAIL      NiBufIConnect: connection pending after 60000ms
+SYSTEM CALL connect
+ERRNO       115
+ERRNO TEXT  Operation now in progress
+COUNTER     3
+
+
+
+**** Trace file opened at 2018-10-29, 11:42:13 GMT
+RFC Library Release: 721 Patch Level 48, Compiled on Apr 14 2018 04:51:23
+ CPIC library: 721.2018.02.03 version 3, NI library: 40, Kernel Release: 721 Patch Level 0
+ Current working directory: /var/www/html/sfgmb, Program: apache2
+ Hardware: AMD/Intel x86_64 with Linux x86_64, Operating_system: Linux 4.4.0-87-generic
+ Hostname: ubuntu, IP address: 127.0.1.1, IPv6 address: 127.0.1.1
+
+Error during connect: 
+LOCATION    CPIC (TCP/IP) on local host with Unicode
+ERROR       partner '10.10.252.16:3330' not reached
+TIME        Mon Oct 29 11:42:13 2018
+RELEASE     721
+COMPONENT   NI (network interface)
+VERSION     40
+RC          -10
+MODULE      nibuf.cpp
+LINE        4658
+DETAIL      NiBufIConnect: connection pending after 60000ms
+SYSTEM CALL connect
+ERRNO       115
+ERRNO TEXT  Operation now in progress
+COUNTER     3
+
+
+
+**** Trace file opened at 2018-10-29, 11:57:59 GMT
+RFC Library Release: 721 Patch Level 48, Compiled on Apr 14 2018 04:51:23
+ CPIC library: 721.2018.02.03 version 3, NI library: 40, Kernel Release: 721 Patch Level 0
+ Current working directory: /var/www/html/sfgmb, Program: apache2
+ Hardware: AMD/Intel x86_64 with Linux x86_64, Operating_system: Linux 4.4.0-87-generic
+ Hostname: ubuntu, IP address: 127.0.1.1, IPv6 address: 127.0.1.1
+
+Error during connect: 
+LOCATION    CPIC (TCP/IP) on local host with Unicode
+ERROR       partner '10.10.252.16:3330' not reached
+TIME        Mon Oct 29 11:57:59 2018
+RELEASE     721
+COMPONENT   NI (network interface)
+VERSION     40
+RC          -10
+MODULE      nibuf.cpp
+LINE        4658
+DETAIL      NiBufIConnect: connection pending after 60000ms
+SYSTEM CALL connect
+ERRNO       115
+ERRNO TEXT  Operation now in progress
+COUNTER     4
+
+
+
+**** Trace file opened at 2018-10-29, 12:11:06 GMT
+RFC Library Release: 721 Patch Level 48, Compiled on Apr 14 2018 04:51:23
+ CPIC library: 721.2018.02.03 version 3, NI library: 40, Kernel Release: 721 Patch Level 0
+ Current working directory: /var/www/html/sfgmb, Program: apache2
+ Hardware: AMD/Intel x86_64 with Linux x86_64, Operating_system: Linux 4.4.0-87-generic
+ Hostname: ubuntu, IP address: 127.0.1.1, IPv6 address: 127.0.1.1
+
+Error during connect: 
+LOCATION    CPIC (TCP/IP) on local host ubuntu with Unicode
+ERROR       partner '10.10.252.16:3330' not reached
+TIME        Mon Oct 29 12:11:06 2018
+RELEASE     721
+COMPONENT   NI (network interface)
+VERSION     40
+RC          -10
+MODULE      nibuf.cpp
+LINE        4658
+DETAIL      NiBufIConnect: connection pending after 60000ms
+SYSTEM CALL connect
+ERRNO       115
+ERRNO TEXT  Operation now in progress
+COUNTER     2
+
+
+
+**** Trace file opened at 2018-10-29, 12:32:05 GMT
+RFC Library Release: 721 Patch Level 48, Compiled on Apr 14 2018 04:51:23
+ CPIC library: 721.2018.02.03 version 3, NI library: 40, Kernel Release: 721 Patch Level 0
+ Current working directory: /var/www/html/sfgmb, Program: apache2
+ Hardware: AMD/Intel x86_64 with Linux x86_64, Operating_system: Linux 4.4.0-87-generic
+ Hostname: ubuntu, IP address: 127.0.1.1, IPv6 address: 127.0.1.1
+
+Error during connect: 
+LOCATION    CPIC (TCP/IP) on local host with Unicode
+ERROR       partner '10.10.252.16:3330' not reached
+TIME        Mon Oct 29 12:32:05 2018
+RELEASE     721
+COMPONENT   NI (network interface)
+VERSION     40
+RC          -10
+MODULE      nibuf.cpp
+LINE        4658
+DETAIL      NiBufIConnect: connection pending after 60000ms
+SYSTEM CALL connect
+ERRNO       115
+ERRNO TEXT  Operation now in progress
+COUNTER     3
+
+
+
+**** Trace file opened at 2018-10-31, 11:51:44 GMT
+RFC Library Release: 721 Patch Level 48, Compiled on Apr 14 2018 04:51:23
+ CPIC library: 721.2018.02.03 version 3, NI library: 40, Kernel Release: 721 Patch Level 0
+ Current working directory: /var/www/html/sfgmb, Program: apache2
+ Hardware: AMD/Intel x86_64 with Linux x86_64, Operating_system: Linux 4.4.0-87-generic
+ Hostname: ubuntu, IP address: 127.0.1.1, IPv6 address: 127.0.1.1
+
+Function module "ZVENDOR_INSERT2" cannot be used for 'remote' calls.
+
+**** Trace file opened at 2018-10-31, 12:18:29 GMT
+RFC Library Release: 721 Patch Level 48, Compiled on Apr 14 2018 04:51:23
+ CPIC library: 721.2018.02.03 version 3, NI library: 40, Kernel Release: 721 Patch Level 0
+ Current working directory: /var/www/html/sfgmb, Program: apache2
+ Hardware: AMD/Intel x86_64 with Linux x86_64, Operating_system: Linux 4.4.0-87-generic
+ Hostname: ubuntu, IP address: 127.0.1.1, IPv6 address: 127.0.1.1
+
+Function module "ZVENDOR_INSERT2" cannot be used for 'remote' calls.
+
+**** Trace file opened at 2018-10-31, 13:58:15 GMT
+RFC Library Release: 721 Patch Level 48, Compiled on Apr 14 2018 04:51:23
+ CPIC library: 721.2018.02.03 version 3, NI library: 40, Kernel Release: 721 Patch Level 0
+ Current working directory: /var/www/html/sfgmb, Program: apache2
+ Hardware: AMD/Intel x86_64 with Linux x86_64, Operating_system: Linux 4.4.0-87-generic
+ Hostname: ubuntu, IP address: 127.0.1.1, IPv6 address: 127.0.1.1
+
+Interval 01 does not exist for object ZNRANGE  NUMC10
+
+**** Trace file opened at 2018-11-06, 12:34:11 GMT
+RFC Library Release: 721 Patch Level 48, Compiled on Apr 14 2018 04:51:23
+ CPIC library: 721.2018.02.03 version 3, NI library: 40, Kernel Release: 721 Patch Level 0
+ Current working directory: /var/www/html/sfgmb, Program: apache2
+ Hardware: AMD/Intel x86_64 with Linux x86_64, Operating_system: Linux 4.4.0-87-generic
+ Hostname: ubuntu, IP address: 127.0.1.1, IPv6 address: 127.0.1.1
+
+Interval 01 does not exist for object ZNRANGE  NUMC10
+
+**** Trace file opened at 2018-11-06, 12:35:54 GMT
+RFC Library Release: 721 Patch Level 48, Compiled on Apr 14 2018 04:51:23
+ CPIC library: 721.2018.02.03 version 3, NI library: 40, Kernel Release: 721 Patch Level 0
+ Current working directory: /var/www/html/sfgmb, Program: apache2
+ Hardware: AMD/Intel x86_64 with Linux x86_64, Operating_system: Linux 4.4.0-87-generic
+ Hostname: ubuntu, IP address: 127.0.1.1, IPv6 address: 127.0.1.1
+
+Interval 01 does not exist for object ZNRANGE  NUMC10
+
+**** Trace file opened at 2018-11-06, 13:12:58 GMT
+RFC Library Release: 721 Patch Level 48, Compiled on Apr 14 2018 04:51:23
+ CPIC library: 721.2018.02.03 version 3, NI library: 40, Kernel Release: 721 Patch Level 0
+ Current working directory: /var/www/html/sfgmb, Program: apache2
+ Hardware: AMD/Intel x86_64 with Linux x86_64, Operating_system: Linux 4.4.0-87-generic
+ Hostname: ubuntu, IP address: 127.0.1.1, IPv6 address: 127.0.1.1
+
+Specify an internal interval

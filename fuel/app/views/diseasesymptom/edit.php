@@ -1,0 +1,1 @@
+<?php echo render('diseasesymptom/_form', array('form_label' => 'Edit record')); ?>

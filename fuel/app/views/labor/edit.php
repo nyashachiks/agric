@@ -1,0 +1,1 @@
+<?php echo render('labor/_form', array('form_label' => 'Edit skill', 'btn_label' => 'Save')); ?>
