@@ -5,7 +5,7 @@
 
 # the fuelphp document
 /docs/
-/files/
+
 # you may install these packages with `oil package`.
 # http://fuelphp.com/docs/packages/oil/package.html
 # /fuel/packages/auth/
@@ -15,8 +15,18 @@
 # /fuel/packages/parser/
 
 # dynamically generated files
+
+# /fuel/app/config/crypt.php
+
+
+# exclude everything
+/fuel/app/tmp/*
 /fuel/app/logs/*/*/*
 /fuel/app/cache/*/*
-/fuel/app/config/crypt.php
-/fuel/app/tmp/fuelfid*
-/fuel/app/tmp/load_*
+/files/*
+
+# exception to the rule
+!/fuel/app/tmp/.gitkeep
+!/fuel/app/logs/.gitkeep
+!/fuel/app/cache/.gitkeep
+!/files/.gitkeep
